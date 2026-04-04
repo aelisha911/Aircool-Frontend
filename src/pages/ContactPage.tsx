@@ -21,14 +21,40 @@ const ContactPage = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-1">
-        <section className="gradient-primary py-16 md:py-24">
-          <div className="section-container text-center">
-            <h1 className="text-4xl md:text-5xl font-extrabold text-primary-foreground mb-4">Contact Us</h1>
-            <p className="text-lg text-primary-foreground/80 max-w-xl mx-auto">
-              Get in touch for a free quote or to schedule a service call.
-            </p>
-          </div>
-        </section>
+       <section className="relative py-20 md:py-28">
+  {/* Background Image */}
+  <div className="absolute inset-0">
+    <img
+src="https://images.unsplash.com/photo-1604328698692-f76ea9498e76"
+      alt="HVAC Service"
+      className="w-full h-full object-cover"
+    />
+    {/* Dark Overlay */}
+    <div className="absolute inset-0 bg-black/60"></div>
+  </div>
+
+  {/* Content */}
+  <div className="section-container relative z-10 text-center">
+    
+    {/* Badge */}
+    <div className="inline-block px-4 py-1.5 mb-6 text-sm font-medium bg-white/20 text-white rounded-full backdrop-blur">
+      ⭐ Trusted HVAC Experts
+    </div>
+
+    {/* Heading */}
+    <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-6">
+      Stay Cool & Comfortable <br />
+      <span className="text-yellow-300">All Year Round</span>
+    </h1>
+
+    {/* Subtext */}
+    <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
+      Professional air conditioning installation, repair & maintenance services 
+      you can rely on. Fast, affordable, and available 24/7.
+    </p>
+
+  </div>
+</section>
 
         <section className="section-padding">
           <div className="section-container">

@@ -18,14 +18,41 @@ const AboutPage = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-1">
-        <section className="gradient-primary py-16 md:py-24">
-          <div className="section-container text-center">
-            <h1 className="text-4xl md:text-5xl font-extrabold text-primary-foreground mb-4">About CoolAirPro</h1>
-            <p className="text-lg text-primary-foreground/80 max-w-xl mx-auto">
-              Delivering comfort and reliability since 2009.
-            </p>
-          </div>
-        </section>
+      <section className="relative py-20 md:py-28 overflow-hidden">
+  {/* Background Image */}
+  <div className="absolute inset-0">
+    <img
+src="https://images.unsplash.com/photo-1497366216548-37526070297c"
+      alt="HVAC Team"
+      className="w-full h-full object-cover"
+    />
+    {/* Overlay */}
+    <div className="absolute inset-0 bg-black/60"></div>
+  </div>
+
+  {/* Content */}
+  <div className="section-container relative z-10 text-center">
+    
+    {/* Small Tag */}
+    <p className="text-sm md:text-base text-white/80 font-medium uppercase tracking-widest mb-3">
+      About Our Company
+    </p>
+
+    {/* Heading */}
+    <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
+      About <span className="text-yellow-300">CoolAirPro</span>
+    </h1>
+
+    {/* Subtitle */}
+    <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-8">
+      Delivering comfort, reliability, and trusted HVAC solutions since 2009.
+    </p>
+
+    {/* Divider Line (Stylish Touch) */}
+    <div className="w-24 h-1 bg-yellow-400 mx-auto rounded-full"></div>
+
+  </div>
+</section>
 
         {/* Company intro */}
         <section className="section-padding">
