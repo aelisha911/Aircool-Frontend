@@ -21,40 +21,31 @@ const ContactPage = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-1">
-       <section className="relative py-20 md:py-28">
-  {/* Background Image */}
-  <div className="absolute inset-0">
-    <img
-src="https://images.unsplash.com/photo-1604328698692-f76ea9498e76"
-      alt="HVAC Service"
-      className="w-full h-full object-cover"
-    />
-    {/* Dark Overlay */}
-    <div className="absolute inset-0 bg-black/60"></div>
-  </div>
+        <section className="relative overflow-hidden py-20 md:py-28">
+          <div className="absolute inset-0">
+            <img
+              src="https://images.unsplash.com/photo-1604328698692-f76ea9498e76"
+              alt="Air conditioning service support"
+              className="h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(14,31,56,0.88),rgba(26,74,128,0.72))]" />
+          </div>
 
-  {/* Content */}
-  <div className="section-container relative z-10 text-center">
-    
-    {/* Badge */}
-    <div className="inline-block px-4 py-1.5 mb-6 text-sm font-medium bg-white/20 text-white rounded-full backdrop-blur">
-      ⭐ Trusted HVAC Experts
-    </div>
+          <div className="section-container relative z-10 text-center">
+            <p className="mb-4 inline-flex rounded-full border border-white/30 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-white/90 md:text-sm">
+              Contact AirCool Dynamics
+            </p>
 
-    {/* Heading */}
-    <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-6">
-      Stay Cool & Comfortable <br />
-      <span className="text-yellow-300">All Year Round</span>
-    </h1>
+            <h1 className="mb-6 text-4xl font-extrabold leading-tight text-white md:text-6xl">
+              Let&apos;s Fix Your Comfort
+              <span className="block text-sky-200">Fast, Friendly, Professional</span>
+            </h1>
 
-    {/* Subtext */}
-    <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
-      Professional air conditioning installation, repair & maintenance services 
-      you can rely on. Fast, affordable, and available 24/7.
-    </p>
-
-  </div>
-</section>
+            <p className="mx-auto max-w-3xl text-base leading-relaxed text-white/85 md:text-xl">
+              From urgent repairs to new installations, our certified HVAC team is ready to help. Send us your details and we&apos;ll get back to you quickly.
+            </p>
+          </div>
+        </section>
 
         <section className="section-padding">
           <div className="section-container">

@@ -15,7 +15,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 210 30% 12%;
 
-    --primary: 187 72% 38%;
+    --primary: 213 62% 32%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 210 25% 95%;
@@ -24,21 +24,21 @@
     --muted: 210 20% 96%;
     --muted-foreground: 210 15% 50%;
 
-    --accent: 200 65% 94%;
-    --accent-foreground: 187 72% 28%;
+    --accent: 213 60% 94%;
+    --accent-foreground: 213 62% 32%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 210 20% 90%;
     --input: 210 20% 90%;
-    --ring: 187 72% 38%;
+    --ring: 213 62% 32%;
 
     --radius: 0.75rem;
 
-    --hero-gradient: linear-gradient(135deg, hsl(187 72% 38%), hsl(200 80% 45%));
+    --hero-gradient: linear-gradient(135deg, hsl(213 62% 32%), hsl(205 78% 42%));
     --card-shadow: 0 4px 24px -4px hsl(210 30% 12% / 0.08);
-    --card-shadow-hover: 0 12px 40px -8px hsl(187 72% 38% / 0.18);
+    --card-shadow-hover: 0 12px 40px -8px hsl(213 62% 32% / 0.18);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -57,6 +57,12 @@
   }
   body {
     @apply bg-background text-foreground font-body antialiased;
+  }
+  a {
+    @apply text-primary transition-colors;
+  }
+  a:hover {
+    @apply text-primary/80;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading font-bold tracking-tight;

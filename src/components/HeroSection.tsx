@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Shield } from "lucide-react";
 import heroImage from "@/assets/hero-hvac.jpg";
-
 const HeroSection = () => {
   return (
     <section className="relative overflow-hidden">
@@ -31,11 +30,6 @@ const HeroSection = () => {
             <Link to="/contact">
               <Button size="lg" className="text-base px-7">
                 Get a Quote <ArrowRight size={18} className="ml-1" />
-              </Button>
-            </Link>
-            <Link to="/contact">
-              <Button size="lg" variant="outline" className="text-base px-7 bg-primary-foreground/10 border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/20 hover:text-primary-foreground">
-                Contact Us
               </Button>
             </Link>
           </div>

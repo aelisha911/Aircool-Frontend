@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/AirCool-LOGO.jpeg";
 
 const navLinks = [
   { label: "Home", path: "/" },
@@ -16,14 +17,9 @@ const Navbar = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-md border-b border-border">
-      <div className="section-container flex items-center justify-between h-16 md:h-20">
+      <div className="section-container flex items-center justify-between h-20 md:h-24">
         <Link to="/" className="flex items-center gap-2">
-          <div className="w-9 h-9 rounded-lg gradient-primary flex items-center justify-center">
-            <Snowflake className="text-primary-foreground" size={20} />
-          </div>
-          <span className="font-heading font-extrabold text-xl text-foreground">
-            CoolAir<span className="text-primary">Pro</span>
-          </span>
+          <img src={logo} alt="AirCool Pro Logo" className="h-20 md:h-24 w-auto" />
         </Link>
 
         {/* Desktop nav */}
@@ -35,7 +31,7 @@ const Navbar = () => {
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                 location.pathname === link.path
                   ? "bg-accent text-accent-foreground"
-                  : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                  : "text-muted-foreground hover:text-primary hover:bg-secondary"
               }`}
             >
               {link.label}
@@ -44,7 +40,7 @@ const Navbar = () => {
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
-          <a href="tel:+1234567890" className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+          <a href="tel:+1234567890" className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
             <Phone size={16} />
             (123) 456-7890
           </a>
@@ -75,7 +71,7 @@ const Navbar = () => {
                 className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
                   location.pathname === link.path
                     ? "bg-accent text-accent-foreground"
-                    : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                    : "text-muted-foreground hover:text-primary hover:bg-secondary"
                 }`}
               >
                 {link.label}
@@ -90,8 +86,5 @@ const Navbar = () => {
     </header>
   );
 };
-
-// Inline import to avoid conflict
-import { Snowflake } from "lucide-react";
 
 export default Navbar;

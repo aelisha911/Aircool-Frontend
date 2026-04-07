@@ -18,41 +18,44 @@ const AboutPage = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-1">
-      <section className="relative py-20 md:py-28 overflow-hidden">
-  {/* Background Image */}
-  <div className="absolute inset-0">
-    <img
-src="https://images.unsplash.com/photo-1497366216548-37526070297c"
-      alt="HVAC Team"
-      className="w-full h-full object-cover"
-    />
-    {/* Overlay */}
-    <div className="absolute inset-0 bg-black/60"></div>
-  </div>
+        <section className="relative overflow-hidden py-20 md:py-28">
+          <div className="absolute inset-0">
+            <img
+              src="https://images.unsplash.com/photo-1497366216548-37526070297c"
+              alt="Air conditioning professionals"
+              className="h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(14,31,56,0.88),rgba(26,74,128,0.72))]" />
+          </div>
 
-  {/* Content */}
-  <div className="section-container relative z-10 text-center">
-    
-    {/* Small Tag */}
-    <p className="text-sm md:text-base text-white/80 font-medium uppercase tracking-widest mb-3">
-      About Our Company
-    </p>
+          <div className="section-container relative z-10">
+            <div className="mx-auto max-w-4xl text-center">
+              <p className="mb-4 inline-flex rounded-full border border-white/30 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-white/90 md:text-sm">
+                Who We Are
+              </p>
 
-    {/* Heading */}
-    <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
-      About <span className="text-yellow-300">CoolAirPro</span>
-    </h1>
+              <h1 className="mb-6 text-4xl font-extrabold leading-tight text-white md:text-6xl">
+                Built For Better Air,
+                <span className="block text-sky-200">Powered by AirCool Dynamics</span>
+              </h1>
 
-    {/* Subtitle */}
-    <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-8">
-      Delivering comfort, reliability, and trusted HVAC solutions since 2009.
-    </p>
+              <p className="mx-auto mb-8 max-w-3xl text-base leading-relaxed text-white/85 md:text-xl">
+                We help homes and businesses stay comfortable year-round with smart HVAC design, expert installation, and dependable support from certified technicians.
+              </p>
 
-    {/* Divider Line (Stylish Touch) */}
-    <div className="w-24 h-1 bg-yellow-400 mx-auto rounded-full"></div>
-
-  </div>
-</section>
+              <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+                <Link to="/contact">
+                  <Button size="lg" className="min-w-[170px]">Talk to Our Team</Button>
+                </Link>
+                <Link to="/services">
+                  <Button size="lg" variant="outline" className="min-w-[170px] border-white/40 bg-white/10 text-white hover:bg-white/20 hover:text-white">
+                    Explore Services
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Company intro */}
         <section className="section-padding">
