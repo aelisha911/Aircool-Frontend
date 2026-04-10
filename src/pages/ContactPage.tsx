@@ -6,6 +6,7 @@ import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import contactHero from "@/assets/Contact-hero.jpeg";
 
 const ContactPage = () => {
   const { toast } = useToast();
@@ -24,7 +25,7 @@ const ContactPage = () => {
         <section className="relative overflow-hidden py-20 md:py-28">
           <div className="absolute inset-0">
             <img
-              src="https://images.unsplash.com/photo-1604328698692-f76ea9498e76"
+              src={contactHero}
               alt="Air conditioning service support"
               className="h-full w-full object-cover"
             />
@@ -85,8 +86,8 @@ const ContactPage = () => {
                   <ul className="space-y-4">
                     {[
                       { icon: MapPin, text: "123 Climate Street, Melbourne VIC 3000" },
-                      { icon: Phone, text: "(123) 456-7890" },
-                      { icon: Mail, text: "info@coolairpro.com" },
+                      { icon: Phone, text: "0490 089 857" },
+                      { icon: Mail, text: "aircooldynamics@gmail.com" },
                       { icon: Clock, text: "Mon–Fri: 7am–6pm | Emergency: 24/7" },
                     ].map((item) => (
                       <li key={item.text} className="flex items-start gap-3">

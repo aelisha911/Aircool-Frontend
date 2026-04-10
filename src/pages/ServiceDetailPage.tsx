@@ -32,9 +32,15 @@ const ServiceDetailPage = () => {
       <Navbar />
       <main className="flex-1">
         {/* Banner */}
-        <section className="relative h-64 md:h-80 overflow-hidden">
-          <img src={service.image} alt={service.title} className="w-full h-full object-cover" width={768} height={512} />
-          <div className="absolute inset-0 bg-foreground/60" />
+        <section className="relative overflow-hidden h-[320px] md:h-[420px]">
+          <img
+            src={service.image}
+            alt={service.title}
+            className="absolute inset-0 h-full w-full object-cover object-center"
+            width={1920}
+            height={1080}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-foreground/85 via-foreground/65 to-foreground/45" />
           <div className="absolute inset-0 flex items-center">
             <div className="section-container">
               <Link to="/services" className="inline-flex items-center gap-1.5 text-sm text-primary-foreground/80 hover:text-primary-foreground mb-3 transition-colors">
