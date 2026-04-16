@@ -10,12 +10,12 @@ import contactHero from "@/assets/Contact-hero.jpeg";
 
 const ContactPage = () => {
   const { toast } = useToast();
-  const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", city: "", message: "" });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({ title: "Message Sent!", description: "We'll get back to you within 24 hours." });
-    setForm({ name: "", email: "", phone: "", message: "" });
+    setForm({ name: "", email: "", phone: "", city: "", message: "" });
   };
 
   return (
@@ -66,9 +66,15 @@ const ContactPage = () => {
                         <Input type="email" placeholder="john@example.com" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required />
                       </div>
                     </div>
-                    <div>
-                      <label className="text-sm font-medium text-foreground mb-1.5 block">Phone</label>
-                      <Input type="tel" placeholder="(123) 456-7890" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} />
+                    <div className="grid sm:grid-cols-2 gap-5">
+                      <div>
+                        <label className="text-sm font-medium text-foreground mb-1.5 block">Phone</label>
+                        <Input type="tel" placeholder="(123) 456-7890" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} />
+                      </div>
+                      <div>
+                        <label className="text-sm font-medium text-foreground mb-1.5 block">City</label>
+                        <Input placeholder="Melbourne" value={form.city} onChange={(e) => setForm({ ...form, city: e.target.value })} />
+                      </div>
                     </div>
                     <div>
                       <label className="text-sm font-medium text-foreground mb-1.5 block">Message</label>
