@@ -77,6 +77,13 @@ const Navbar = () => {
                 {link.label}
               </Link>
             ))}
+            <div className="px-4 py-3 rounded-lg text-sm font-medium transition-colors text-muted-foreground hover:text-primary">
+              <a href="tel:+1234567890" className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+              <Phone size={16} />
+                0490 089 857
+            </a>
+            </div>
+            
             <Link to="/contact" onClick={() => setOpen(false)} className="mt-2">
               <Button className="w-full">Get a Quote</Button>
             </Link>
