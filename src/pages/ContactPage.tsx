@@ -7,15 +7,29 @@ import { useToast } from "@/hooks/use-toast";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import contactHero from "@/assets/Contact-hero.jpeg";
+import { sendContactForm } from "@/services/api";
 
 const ContactPage = () => {
   const { toast } = useToast();
   const [form, setForm] = useState({ name: "", email: "", phone: "", city: "", message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({ title: "Message Sent!", description: "We'll get back to you within 24 hours." });
-    setForm({ name: "", email: "", phone: "", city: "", message: "" });
+    setIsSubmitting(true);
+    try {
+      await sendContactForm(form);
+      toast({ title: "Message Sent!", description: "We'll get back to you within 24 hours." });
+      setForm({ name: "", email: "", phone: "", city: "", message: "" });
+    } catch {
+      toast({
+        title: "Failed to send",
+        description: "Please check backend server or API URL and try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -80,7 +94,9 @@ const ContactPage = () => {
                       <label className="text-sm font-medium text-foreground mb-1.5 block">Message</label>
                       <Textarea placeholder="Tell us about your HVAC needs..." rows={5} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} required />
                     </div>
-                    <Button type="submit" size="lg" className="w-full sm:w-auto px-8">Send Message</Button>
+                    <Button type="submit" size="lg" className="w-full sm:w-auto px-8" disabled={isSubmitting}>
+                      {isSubmitting ? "Sending..." : "Send Message"}
+                    </Button>
                   </form>
                 </div>
               </div>
