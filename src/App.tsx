@@ -5,12 +5,15 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import ScrollToTop from "./components/ScrollToTop";
+import AdminRoute from "./components/AdminRoute";
 import Index from "./pages/Index.tsx";
 import ServicesPage from "./pages/ServicesPage.tsx";
 import ServiceDetailPage from "./pages/ServiceDetailPage.tsx";
 import AboutPage from "./pages/AboutPage.tsx";
 import ContactPage from "./pages/ContactPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import AdminLoginPage from "./pages/AdminLoginPage.tsx";
+import AdminDiscountsPage from "./pages/AdminDiscountsPage.tsx";
 
 const queryClient = new QueryClient();
 const BlogsPage = lazy(() => import("./pages/BlogsPage"));
@@ -27,6 +30,15 @@ const App = () => (
           <Route path="/services/:slug" element={<ServiceDetailPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/admin/login" element={<AdminLoginPage />} />
+          <Route
+            path="/admin/discounts"
+            element={
+              <AdminRoute>
+                <AdminDiscountsPage />
+              </AdminRoute>
+            }
+          />
           <Route
             path="/blogs"
             element={
