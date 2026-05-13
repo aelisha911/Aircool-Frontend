@@ -4,7 +4,7 @@ import { Target, Eye, Award, Users } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTABanner from "@/components/CTABanner";
-import aboutTeam from "@/assets/about-team.jpg";
+import aboutTeam from "@/assets/about.jpg";
 
 const stats = [
   { value: "15+", label: "Years Experience" },
@@ -25,7 +25,7 @@ const AboutPage = () => {
               alt="Air conditioning professionals"
               className="h-full w-full object-cover"
             />
-            <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(14,31,56,0.88),rgba(26,74,128,0.72))]" />
+            <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(14,31,56,0.95),rgba(26,74,128,0.85))]" />
           </div>
 
           <div className="section-container relative z-10">

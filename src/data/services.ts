@@ -1,7 +1,8 @@
 import serviceHeatingCooling from "@/assets/service-heating-cooling.jpg";
 import serviceMaintenance from "@/assets/service-maintenance.jpg";
 import serviceInstallation from "@/assets/service-installation.jpg";
-import serviceRepair from "@/assets/service-repair.jpg";
+import serviceCentralDucted from "@/assets/service-cental-ducted.jpg";
+import serviceSplitAC from "@/assets/service-split-type-ac-unit.jpeg";
 import serviceEvaporative from "@/assets/service-evaporative.jpg";
 import serviceCoolroom from "@/assets/service-coolroom.jpg";
 import serviceReplacement from "@/assets/service-replacement.jpg";
@@ -62,19 +63,35 @@ export const services: Service[] = [
   icon: "Settings",
 },
  {
-  slug: "emergency-repairs",
-  title: "Emergency Repairs",
-  shortDescription: "HVAC system issues are promptly and reliably serviced with same-day repair options.",
-  fullDescription: "You require prompt, dependable servicing when your system malfunctions. Our emergency repair crew is on hand to promptly identify and fix problems. Before any work starts, we offer clear pricing and have common parts on our trucks for same-day repairs. We deal with everything, including electrical problems and compressor breakdowns.",
+  slug: "central-ducted-air-conditioning",
+  title: "Central Ducted Air Conditioning",
+  shortDescription: "Efficient whole-building cooling solutions with advanced central ducted air conditioning systems.",
+  fullDescription: "Our central ducted air conditioning services provide powerful and energy-efficient cooling for residential, commercial, and industrial spaces. We specialize in installation, maintenance, and repair of centralized HVAC systems designed to distribute cool air evenly throughout the property. Our skilled technicians ensure smooth performance, lower energy consumption, and long-lasting comfort with high-quality components and professional servicing.",
   benefits: [
-    "24-hour emergency assistance",
-    "Same-day fixes",
-    "Clear pricing",
-    "Authentic replacement components",
-    "Guarantee for all repairs"
+    "Uniform cooling across all rooms",
+    "Energy-efficient performance",
+    "Low noise operation",
+    "Professional installation and servicing",
+    "Reliable maintenance support"
   ],
-  image: serviceRepair,
-  icon: "AlertCircle",
+  image: serviceCentralDucted,
+  icon: "Building2",
+},
+
+{
+  slug: "split-type-air-conditioning-unit",
+  title: "Split Type Air Conditioning Unit",
+  shortDescription: "Modern split AC solutions designed for efficient and quiet cooling performance.",
+  fullDescription: "We provide complete split type air conditioning unit services including installation, repair, gas refilling, and maintenance. Split AC systems are ideal for homes, offices, and commercial spaces, delivering fast cooling with energy-saving technology. Our experienced technicians ensure proper setup and reliable servicing to keep your unit performing efficiently throughout the year.",
+  benefits: [
+    "Fast and efficient cooling",
+    "Quiet indoor operation",
+    "Energy-saving technology",
+    "Quick installation service",
+    "Affordable maintenance solutions"
+  ],
+  image: serviceSplitAC,
+  icon: "Wind",
 },
   {
     slug: "evaporative-cooler",

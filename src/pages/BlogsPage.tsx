@@ -55,7 +55,7 @@ const BlogsPage = () => {
           {blogs.map((article) => (
             <article key={article.id} className="rounded-xl border border-border bg-card p-6">
               <h2 className="text-xl font-bold text-foreground mb-2">{article.title}</h2>
-              <p className="text-muted-foreground leading-relaxed mb-4">{article.summary}</p>
+              <h5 className="text-md font-semibold text-foreground leading-relaxed mb-4">{article.summary}</h5>
               <div className="space-y-3">
                 {article.content.map((paragraph, index) => (
                   <p key={`${article.id}-${index}`} className="text-muted-foreground leading-relaxed">

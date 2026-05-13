@@ -5,7 +5,7 @@ type DiscountImageSectionProps = {
 
 const DiscountImageSection = ({ imageUrl, imageAlt }: DiscountImageSectionProps) => {
   return (
-    <section className="section-padding pt-8">
+    <section className="section-padding pt-8 pb-0">
       <div className="section-container">
         <div className="overflow-hidden">
           <img
