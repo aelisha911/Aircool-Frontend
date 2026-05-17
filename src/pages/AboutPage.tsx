@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTABanner from "@/components/CTABanner";
 import aboutTeam from "@/assets/about.jpg";
+import aboutVideo from "@/assets/about-video.mp4";
 
 const stats = [
   { value: "15+", label: "Years Experience" },
@@ -83,8 +84,8 @@ const AboutPage = () => {
                   <Button size="lg">Get in Touch</Button>
                 </Link>
               </div>
-              <div className="rounded-xl overflow-hidden card-elevated">
-                <img src={aboutTeam} alt="CoolAirPro team" loading="lazy" width={1200} height={600} className="w-full h-auto object-cover" />
+              <div className="rounded-xl overflow-hidden">
+                <video src={aboutVideo} autoPlay loop muted className="w-full h-auto object-cover" />
               </div>
             </div>
           </div>

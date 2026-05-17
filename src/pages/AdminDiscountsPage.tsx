@@ -27,6 +27,11 @@ const AdminDiscountsPage = () => {
 
   const [title, setTitle] = useState("");
   const [imageFile, setImageFile] = useState<File | null>(null);
+  const [videoUrl, setVideoUrl] = useState<string>("");
+  const [isInactive, setIsInactive] = useState<boolean>(false);
+  const [videoFile, setVideoFile] = useState<File | null>(null);
+  const [togglingId, setTogglingId] = useState<string | null>(null);
+  const [formKey, setFormKey] = useState(0);
   const [editingDiscount, setEditingDiscount] = useState<AdminDiscount | null>(null);
   const [discountToDelete, setDiscountToDelete] = useState<AdminDiscount | null>(null);
 
@@ -46,28 +51,34 @@ const AdminDiscountsPage = () => {
           id: editingDiscount.id,
           title: title.trim(),
           imageFile,
+          videoFile: videoFile ?? null,
+          videoUrl: videoUrl || null,
+          isInactive: isInactive ?? null,
         });
         return;
-      }
-
-      if (!imageFile) {
-        throw new Error("Image is required for a new discount.");
       }
 
       await createAdminDiscount({
         title: title.trim(),
         imageFile,
+        videoFile: videoFile ?? undefined,
+        videoUrl: videoUrl || undefined,
+        isInactive: isInactive || undefined,
       });
     },
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ["admin-discounts"] });
-      await queryClient.invalidateQueries({ queryKey: ["latest-discount-image"] });
+      await queryClient.invalidateQueries({ queryKey: ["active-discounts"] });
       toast({
         title: editingDiscount ? "Discount updated" : "Discount created",
       });
       setTitle("");
       setImageFile(null);
+      setVideoUrl("");
+      setVideoFile(null);
+      setIsInactive(false);
       setEditingDiscount(null);
+      setFormKey((currentKey) => currentKey + 1);
     },
     onError: (error: unknown) => {
       const message = error instanceof Error ? error.message : "Could not save discount.";
@@ -83,7 +94,7 @@ const AdminDiscountsPage = () => {
     mutationFn: (id: string) => deleteAdminDiscount(id),
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ["admin-discounts"] });
-      await queryClient.invalidateQueries({ queryKey: ["latest-discount-image"] });
+      await queryClient.invalidateQueries({ queryKey: ["active-discounts"] });
       toast({
         title: "Discount deleted",
       });
@@ -150,12 +161,19 @@ const AdminDiscountsPage = () => {
     setEditingDiscount(discount);
     setTitle(discount.title);
     setImageFile(null);
+    setVideoUrl(discount.videoUrl ?? "");
+    setIsInactive(Boolean(discount.isInactive));
+    setVideoFile(null);
   };
 
   const handleCancelEdit = () => {
     setEditingDiscount(null);
     setTitle("");
     setImageFile(null);
+    setVideoUrl("");
+    setIsInactive(false);
+    setVideoFile(null);
+    setFormKey((currentKey) => currentKey + 1);
   };
 
   const handleLogout = () => {
@@ -217,7 +235,7 @@ const AdminDiscountsPage = () => {
 
         <div className="rounded-2xl border border-border bg-background p-6 shadow-sm">
           <h2 className="text-lg font-semibold text-foreground">{editingDiscount ? "Edit Discount" : "Add Discount"}</h2>
-          <form className="mt-4 grid gap-4" onSubmit={handleSubmit}>
+          <form key={formKey} className="mt-4 grid gap-4" onSubmit={handleSubmit}>
             <div>
               <label htmlFor="discount-title" className="mb-1 block text-sm font-medium text-foreground">
                 Title
@@ -243,8 +261,60 @@ const AdminDiscountsPage = () => {
                 accept="image/*"
                 onChange={(event) => setImageFile(event.target.files?.[0] ?? null)}
                 className="block w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground"
-                required={!editingDiscount}
+                required={false}
               />
+              {editingDiscount && (
+                <div className="mt-3 rounded-lg border border-dashed border-border bg-muted/20 p-3">
+                  {editingDiscount.imageUrl ? (
+                    <img
+                      src={editingDiscount.imageUrl}
+                      alt={editingDiscount.title}
+                      className="h-32 w-full rounded-md object-contain bg-background"
+                    />
+                  ) : (
+                    <div className="flex h-32 items-center justify-center rounded-md bg-background text-sm text-muted-foreground">
+                      No image saved
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+
+            <div>
+              <label htmlFor="discount-video-file" className="mb-1 block text-sm font-medium text-foreground">Choose video file (optional)</label>
+              <input
+                id="discount-video-file"
+                type="file"
+                accept="video/*"
+                onChange={(e) => setVideoFile(e.target.files?.[0] ?? null)}
+                className="block w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground"
+              />
+              {editingDiscount && (
+                <div className="mt-3 rounded-lg border border-dashed border-border bg-muted/20 p-3">
+                  {editingDiscount.videoUrl ? (
+                    <video
+                      controls
+                      src={editingDiscount.videoUrl}
+                      className="h-32 w-full rounded-md object-contain bg-background"
+                    />
+                  ) : (
+                    <div className="flex h-32 items-center justify-center rounded-md bg-background text-sm text-muted-foreground">
+                      No video saved
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+
+            <div className="flex items-center gap-2">
+              <input
+                id="discount-inactive"
+                type="checkbox"
+                checked={!isInactive}
+                onChange={(e) => setIsInactive(!e.target.checked)}
+                className="h-4 w-4 rounded border-input bg-background"
+              />
+              <label htmlFor="discount-inactive" className="text-sm text-foreground">Mark as active (show on homepage)</label>
             </div>
 
             <div className="flex flex-wrap gap-3">
@@ -282,7 +352,9 @@ const AdminDiscountsPage = () => {
                 <thead className="bg-muted/60">
                   <tr>
                     <th className="px-4 py-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Image</th>
+                    <th className="px-4 py-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Video</th>
                     <th className="px-4 py-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Title</th>
+                    <th className="px-4 py-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Activated</th>
                     <th className="px-4 py-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Actions</th>
                   </tr>
                 </thead>
@@ -290,14 +362,67 @@ const AdminDiscountsPage = () => {
                   {discounts.map((discount) => (
                     <tr key={discount.id} className="border-t border-border align-middle">
                       <td className="px-4 py-3">
-                        <img
-                          src={discount.imageUrl}
-                          alt={discount.title}
-                          className="h-16 w-28 rounded-md object-cover"
-                          loading="lazy"
-                        />
+                        {discount.imageUrl ? (
+                          <img
+                            src={discount.imageUrl}
+                            alt={discount.title}
+                            className="h-16 w-28 rounded-md object-cover"
+                            loading="lazy"
+                          />
+                        ) : (
+                          <div className="flex h-16 w-28 items-center justify-center rounded-md border border-dashed border-border bg-muted text-xs text-muted-foreground">
+                            No image
+                          </div>
+                        )}
+                      </td>
+                      <td className="px-4 py-3 text-sm text-foreground">
+                        {discount.videoUrl ? (
+                          <a href={discount.videoUrl} target="_blank" rel="noreferrer" className="text-sm text-primary underline">
+                            View
+                          </a>
+                        ) : (
+                          <span className="text-sm text-muted-foreground">—</span>
+                        )}
                       </td>
                       <td className="px-4 py-3 text-sm font-medium text-foreground">{discount.title}</td>
+                      <td className="px-4 py-3 text-sm text-foreground">
+                        <label className="inline-flex items-center gap-2">
+                          <input
+                            type="checkbox"
+                            checked={!discount.isInactive}
+                            disabled={togglingId === discount.id}
+                            onChange={async () => {
+                              const newInactive = !discount.isInactive;
+                              setTogglingId(discount.id);
+                              try {
+                                await updateAdminDiscount({
+                                  id: discount.id,
+                                  title: discount.title,
+                                  isInactive: newInactive,
+                                });
+
+                                // Refresh admin list
+                                await queryClient.invalidateQueries({ queryKey: ["admin-discounts"] });
+                                await queryClient.invalidateQueries({ queryKey: ["active-discounts"] });
+
+                                toast({
+                                  title: newInactive ? "Discount deactivated" : "Discount activated",
+                                });
+                              } catch (err: unknown) {
+                                const message = err instanceof Error ? err.message : "Could not update discount.";
+                                toast({
+                                  title: "Update failed",
+                                  description: message,
+                                  variant: "destructive",
+                                });
+                              } finally {
+                                setTogglingId(null);
+                              }
+                            }}
+                          />
+                          <span className="text-sm">{discount.isInactive ? "Deactivated" : "Activated"}</span>
+                        </label>
+                      </td>
                       <td className="px-4 py-3">
                         <div className="flex gap-2">
                           <button

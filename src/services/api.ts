@@ -8,9 +8,6 @@ export const getBackendOrigin = () =>
 
 const API = axios.create({
   baseURL: getApiBaseUrl(),
-  headers: {
-    "Content-Type": "application/json",
-  },
 });
 
 export type ContactFormPayload = {
@@ -23,13 +20,20 @@ export type ContactFormPayload = {
 
 // Homepage discount helpers removed — feature deprecated
 export type DiscountImage = {
-  imageUrl: string;
+  imageUrl?: string;
   imageAlt?: string;
+  videoUrl?: string;
+  isInactive?: boolean;
+  isActive?: boolean;
 };
+
 export type AdminDiscount = {
   id: string;
   title: string;
-  imageUrl: string;
+  imageUrl?: string;
+  videoUrl?: string;
+  isInactive?: boolean;
+  isActive?: boolean;
 };
 
 const toAbsoluteUrl = (value?: string) => {
@@ -91,6 +95,18 @@ const toRecord = (value: unknown) => {
   return value as Record<string, unknown>;
 };
 
+const parseBoolean = (value: unknown): boolean | undefined => {
+  if (typeof value === "boolean") return value;
+  if (typeof value === "number") return value !== 0;
+  if (typeof value === "string") {
+    const v = value.trim().toLowerCase();
+    if (v === "true" || v === "1" || v === "yes") return true;
+    if (v === "false" || v === "0" || v === "no") return false;
+  }
+
+  return undefined;
+};
+
 const normalizeDiscountImage = (source: Record<string, unknown>): DiscountImage | null => {
   const imageValue = pickStringField(source, [
     "imageUrl",
@@ -106,9 +122,6 @@ const normalizeDiscountImage = (source: Record<string, unknown>): DiscountImage 
   ]);
 
   const imageUrl = toAbsoluteUrl(imageValue);
-  if (!imageUrl) {
-    return null;
-  }
 
   const imageAlt = pickStringField(source, [
     "imageAlt",
@@ -121,7 +134,38 @@ const normalizeDiscountImage = (source: Record<string, unknown>): DiscountImage 
     "Name",
   ]);
 
-  return { imageUrl, imageAlt };
+  const videoValue = pickVideoField(source, [
+    "videoUrl",
+    "video",
+    "video_url",
+    "videoFile",
+    "video_file",
+    "VideoUrl",
+    "Video",
+    "videoPath",
+    "video_path",
+    "mediaUrl",
+    "media_url",
+  ]);
+
+  const videoUrl = toAbsoluteUrl(videoValue);
+
+  if (!imageUrl && !videoUrl) {
+    return null;
+  }
+
+  return { imageUrl, imageAlt, videoUrl };
+};
+
+const pickVideoField = (source: Record<string, unknown>, keys: string[]) => {
+  for (const key of keys) {
+    const candidate = source[key];
+    if (typeof candidate === "string" && candidate.trim().length > 0) {
+      return candidate;
+    }
+  }
+
+  return undefined;
 };
 
 const normalizeAdminDiscount = (source: Record<string, unknown>): AdminDiscount | null => {
@@ -141,14 +185,44 @@ const normalizeAdminDiscount = (source: Record<string, unknown>): AdminDiscount 
   ]);
 
   const imageUrl = toAbsoluteUrl(imageValue);
-  if (!id || !imageUrl) {
+  if (!id) {
     return null;
   }
+
+  const videoValue = pickVideoField(source, [
+    "videoUrl",
+    "video",
+    "video_url",
+    "videoFile",
+    "video_file",
+    "VideoUrl",
+    "Video",
+    "videoPath",
+    "video_path",
+    "mediaUrl",
+    "media_url",
+  ]);
+
+  const videoUrl = toAbsoluteUrl(videoValue);
+
+  const isInactive = parseBoolean(
+    source["isInactive"] ?? source["inactive"] ?? source["is_inactive"] ?? source["IsInactive"] ?? source["inactiveFlag"]
+  );
+
+  const isActiveVal = parseBoolean(
+    source["isActive"] ?? source["active"] ?? source["is_active"] ?? source["IsActive"]
+  );
+
+  // Prefer explicit isActive when present, otherwise use isInactive
+  const finalIsInactive = typeof isActiveVal === "boolean" ? !isActiveVal : isInactive;
 
   return {
     id,
     title,
     imageUrl,
+    videoUrl,
+    isInactive: finalIsInactive,
+    isActive: typeof isActiveVal === "boolean" ? isActiveVal : undefined,
   };
 };
 
@@ -170,6 +244,26 @@ const extractDiscountItems = (payload: unknown) => {
   return [payloadObject];
 };
 
+const isDiscountActive = (itemObject: Record<string, unknown>) => {
+  const isActiveVal = parseBoolean(
+    itemObject["isActive"] ?? itemObject["active"] ?? itemObject["is_active"]
+  );
+
+  const isInactiveVal = parseBoolean(
+    itemObject["isInactive"] ?? itemObject["inactive"] ?? itemObject["is_inactive"]
+  );
+
+  if (typeof isActiveVal === "boolean") {
+    return isActiveVal;
+  }
+
+  if (typeof isInactiveVal === "boolean") {
+    return !isInactiveVal;
+  }
+
+  return true;
+};
+
 export const sendContactForm = (data: ContactFormPayload) =>
   API.post("/api/send-email", data);
 
@@ -185,11 +279,39 @@ export const fetchLatestDiscountImage = () =>
 
       const normalizedImage = normalizeDiscountImage(itemObject);
       if (normalizedImage) {
-        return normalizedImage;
+        if (!isDiscountActive(itemObject)) {
+          continue;
+        }
+
+        return {
+          ...normalizedImage,
+          isInactive: false,
+        };
       }
     }
 
     return null;
+  });
+
+export const fetchActiveDiscounts = () =>
+  API.get<unknown>("/api/discounts").then((response) => {
+    const discountItems = extractDiscountItems(response.data);
+
+    const activeDiscounts: DiscountImage[] = [];
+
+    for (const item of discountItems) {
+      const itemObject = toRecord(item);
+      if (!itemObject || !isDiscountActive(itemObject)) {
+        continue;
+      }
+
+      const normalizedDiscount = normalizeDiscountImage(itemObject);
+      if (normalizedDiscount) {
+        activeDiscounts.push(normalizedDiscount);
+      }
+    }
+
+    return activeDiscounts;
   });
 
 export const fetchAdminDiscounts = () =>
@@ -212,10 +334,18 @@ export const fetchAdminDiscounts = () =>
     return normalizedItems;
   });
 
-export const createAdminDiscount = (payload: { title: string; imageFile: File }) => {
+export const createAdminDiscount = (payload: { title: string; imageFile?: File | null; videoFile?: File | null; videoUrl?: string; isInactive?: boolean }) => {
   const formData = new FormData();
   formData.append("title", payload.title);
-  formData.append("image", payload.imageFile);
+  if (payload.imageFile) {
+    formData.append("image", payload.imageFile);
+  }
+  if (payload.videoFile) {
+    formData.append("videoUrl", payload.videoFile);
+  } else if (payload.videoUrl) {
+    formData.append("videoUrl", payload.videoUrl);
+  }
+  if (typeof payload.isInactive !== "undefined") formData.append("isInactive", String(payload.isInactive));
 
   return API.post("/api/discounts", formData);
 };
@@ -224,11 +354,22 @@ export const updateAdminDiscount = (payload: {
   id: string;
   title: string;
   imageFile?: File | null;
+  videoFile?: File | null;
+  videoUrl?: string | null;
+  isInactive?: boolean | null;
 }) => {
   const formData = new FormData();
   formData.append("title", payload.title);
   if (payload.imageFile) {
     formData.append("image", payload.imageFile);
+  }
+  if (payload.videoFile) {
+    formData.append("videoUrl", payload.videoFile);
+  } else if (typeof payload.videoUrl !== "undefined" && payload.videoUrl !== null) {
+    formData.append("videoUrl", payload.videoUrl);
+  }
+  if (typeof payload.isInactive !== "undefined" && payload.isInactive !== null) {
+    formData.append("isInactive", String(payload.isInactive));
   }
 
   return API.put(`/api/discounts/${payload.id}`, formData);

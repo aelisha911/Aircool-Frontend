@@ -40,7 +40,7 @@ const Footer = () => {
           <div>
             <h4 className="font-heading font-bold text-sm uppercase tracking-wider mb-4 text-background/90">Services</h4>
             <ul className="space-y-2.5">
-              {["Heating & Cooling", "Maintenance", "Installation", "Repair", "Evaporative Cooler", "Coolroom"].map((s) => (
+              {["Heating & Cooling", "Maintenance", "Installation", "Repair", "Evaporative Cooler", "Coolroom","Split Type AC Unit","Central Ducted Air Conditioning"].map((s) => (
                 <li key={s}>
                   <Link to="/services" className="text-sm text-background/75 hover:text-sky-200 transition-all duration-200 hover:translate-x-0.5 inline-block">
                     {s}

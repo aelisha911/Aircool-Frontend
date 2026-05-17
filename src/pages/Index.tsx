@@ -8,12 +8,12 @@ import CTABanner from "@/components/CTABanner";
 import DiscountImageSection from "@/components/DiscountImageSection";
 import ServiceCard from "@/components/ServiceCard";
 import { services } from "@/data/services";
-import { fetchLatestDiscountImage } from "@/services/api";
+import { fetchActiveDiscounts } from "@/services/api";
 
 const Index = () => {
-  const { data: latestDiscountImage } = useQuery({
-    queryKey: ["latest-discount-image"],
-    queryFn: fetchLatestDiscountImage,
+  const { data: activeDiscounts = [] } = useQuery({
+    queryKey: ["active-discounts"],
+    queryFn: fetchActiveDiscounts,
     staleTime: 1000 * 60 * 10,
   });
 
@@ -22,13 +22,6 @@ const Index = () => {
       <Navbar />
       <main className="flex-1">
         <HeroSection />
-
-        {latestDiscountImage && (
-          <DiscountImageSection
-            imageUrl={latestDiscountImage.imageUrl}
-            imageAlt={latestDiscountImage.imageAlt}
-          />
-        )}
 
         {/* Services preview */}
         <section className="section-padding">
@@ -46,6 +39,15 @@ const Index = () => {
             </div>
           </div>
         </section>
+
+        {activeDiscounts.map((discount, index) => (
+          <DiscountImageSection
+            key={`${discount.imageUrl ?? discount.videoUrl ?? "discount"}-${index}`}
+            imageUrl={discount.imageUrl}
+            imageAlt={discount.imageAlt}
+            videoUrl={discount.videoUrl}
+          />
+        ))}
 
         <WhyChooseUs />
         <Testimonials />

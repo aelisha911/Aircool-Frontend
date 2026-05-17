@@ -16,7 +16,7 @@ const Navbar = () => {
   const location = useLocation();
 
   return (
-    <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-md border-b border-border">
+    <header className="sticky top-0 z-50 bg-card border-b border-border">
       <div className="section-container flex items-center justify-between h-20 md:h-24">
         <Link to="/" className="flex items-center gap-2">
           <img src={logo} alt="AirCool Pro Logo" className="h-20 md:h-24 w-auto" />
@@ -49,14 +49,19 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Mobile toggle */}
-        <button
-          onClick={() => setOpen(!open)}
-          className="md:hidden p-2 rounded-lg hover:bg-secondary transition-colors"
-          aria-label="Toggle menu"
-        >
-          {open ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Mobile actions */}
+        <div className="md:hidden flex items-center gap-2">
+          <a href="tel:+1234567890" className="p-2 rounded-lg hover:bg-secondary transition-colors text-primary" aria-label="Call us">
+            <Phone size={20} />
+          </a>
+          <button
+            onClick={() => setOpen(!open)}
+            className="p-2 rounded-lg hover:bg-secondary transition-colors"
+            aria-label="Toggle menu"
+          >
+            {open ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
@@ -77,12 +82,6 @@ const Navbar = () => {
                 {link.label}
               </Link>
             ))}
-            <div className="px-4 py-3 rounded-lg text-sm font-medium transition-colors text-muted-foreground hover:text-primary">
-              <a href="tel:+1234567890" className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
-              <Phone size={16} />
-                0490 089 857
-            </a>
-            </div>
             
             <Link to="/contact" onClick={() => setOpen(false)} className="mt-2">
               <Button className="w-full">Get a Quote</Button>
