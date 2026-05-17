@@ -57,39 +57,124 @@ const AboutPage = () => {
             </div>
           </div>
         </section>
+{/* About Section */}
+<section className="section-padding">
+  <div className="section-container">
+    <div className="max-w-6xl mx-auto">
 
-        {/* Company intro */}
-        <section className="section-padding">
-          <div className="section-container">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-2">Our Story</p>
-                <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-6">Built on Trust, Driven by Excellence</h2>
-                <p className="text-muted-foreground leading-relaxed mb-4">
-                  At Air Cool Dynamics, we've been working with air conditioning systems for quite a few years now, and honestly, we've seen just about everything - from small fixes to complete system breakdowns.
-                </p>
-                <p className="text-muted-foreground leading-relaxed mb-4">
-                  We help with installation, repairs, regular servicing, and even upgrades if your old unit just isn't doing the job anymore. Some days it's a quick fix, other times it takes a bit more time - but we always try to get things sorted without unnecessary delays.
-                </p>
-                <p className="text-muted-foreground leading-relaxed mb-4">
-                  Our team doesn't believe in rushing through work just to move on to the next job. We take a bit of extra care to make sure everything is running properly before we leave. It saves you trouble later, and that's what really matters.
-                </p>
-                <p className="text-muted-foreground leading-relaxed mb-4">
-                  We also understand that AC issues usually come at the worst time (especially in the heat), so we do our best to be available when you actually need us.
-                </p>
-                <p className="text-muted-foreground leading-relaxed mb-6">
-                  At the end of the day, we just want our customers to feel comfortable - not only because their AC is working, but because they know they called the right people.
-                </p>
-                <Link to="/contact">
-                  <Button size="lg">Get in Touch</Button>
-                </Link>
-              </div>
-              <div className="rounded-xl overflow-hidden">
-                <video src={aboutVideo} autoPlay loop muted className="w-full h-auto object-cover" />
-              </div>
-            </div>
-          </div>
-        </section>
+     {/* Top Section */}
+<div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 items-start">
+
+  {/* Left Side */}
+  <div className="space-y-4">
+
+    {/* Heading Content */}
+    <div className="space-y-2">
+      <p className="text-sm font-semibold text-primary uppercase tracking-[3px] text-justify">
+        Our Story
+      </p>
+
+      <h2 className="text-xl md:text-4xl font-bold text-foreground leading-tight">
+        Built on Trust,
+        <br />
+        Driven by Excellence
+      </h2>
+    </div>
+
+    {/* Mobile/Tablet Video */}
+    <div className="flex justify-center lg:hidden w-full">
+      <div className="w-full sm:w-[90%] md:w-[80%] rounded-2xl overflow-hidden shadow-lg">
+
+        <video
+          src={aboutVideo as string}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-[280px] md:h-[320px] object-cover"
+        />
+
+      </div>
+    </div>
+
+    {/* Paragraph Content */}
+    <div className="space-y-2">
+
+      <p className="text-muted-foreground leading-7 text-justify mt-4">
+        At Air Cool Dynamics, we've been working with air conditioning
+        systems for quite a few years now, and honestly, we've seen
+        just about everything from small fixes to complete system
+        breakdowns.
+      </p>
+
+      <p className="text-muted-foreground leading-7 text-justify">
+        We help with installation, repairs, regular servicing, and
+        even upgrades if your old unit just isn't doing the job anymore.
+      </p>
+
+      <p className="text-muted-foreground leading-7 text-justify">
+        Our team doesn't believe in rushing through work just to move on
+        to the next job.
+      </p>
+
+    </div>
+
+  </div>
+
+  {/* Desktop Video Only */}
+  <div className="hidden lg:flex justify-end w-full">
+    <div className="w-full rounded-2xl overflow-hidden shadow-lg">
+
+      <video
+        src={aboutVideo as string}
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="w-full h-[320px] object-cover"
+      />
+
+    </div>
+  </div>
+
+</div>
+
+{/* Bottom Content */}
+<div className="mt-2 space-y-2">
+  <p className="text-muted-foreground leading-7 text-justify">
+    We take extra care to make sure everything is
+    running properly before we leave. It saves you trouble later,
+    and that's what really matters.
+  </p>
+
+  <p className="text-muted-foreground leading-7 text-justify">
+    We also understand that AC issues usually come at the worst time,
+    especially during extreme heat, so we do our best to be available
+    when you actually need us.
+  </p>
+
+  <p className="text-muted-foreground leading-7 text-justify">
+    At the end of the day, we just want our customers to feel
+    comfortable not only because their AC is working, but because
+    they know they called the right people.
+  </p>
+</div>
+
+      {/* Button */}
+     <div className="flex justify-center mt-8">
+  <Link to="/contact">
+    <Button
+      size="lg"
+      className="px-11 py-6 text-lg md:text-xl font-semibold rounded-2xl"
+    >
+      Get in Touch
+    </Button>
+  </Link>
+</div>
+
+    </div>
+  </div>
+</section>
 
         {/* Stats */}
         <section className="bg-secondary py-12">
@@ -117,6 +202,7 @@ const AboutPage = () => {
                 <p className="text-muted-foreground leading-relaxed">
              
                   To provide outstanding HVAC services with a focus on long-term value, energy efficiency, and customer comfort. Our goal is to be the first choice for all refrigeration, heating, and cooling needs.
+
                 </p>
               </div>
               <div className="bg-card rounded-xl p-8 card-elevated">
@@ -140,3 +226,4 @@ const AboutPage = () => {
 };
 
 export default AboutPage;
+
