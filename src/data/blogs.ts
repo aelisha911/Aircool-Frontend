@@ -24,48 +24,171 @@ export const blogs: BlogArticle[] = [
 "This project achieved a significant reduction in landfill waste, equating to over 95% by weight. Additionally, recycling was able to provide our business with a distinct competitive edge in what is a very ‘tight’ market, as the estimated economic return in terms recycling was in excess of five thousand dollars. This investigation has ascertained that our environmental practices coupled with the City of Vincent’s Sustainable Environmental Strategy and promoting actions are environmentally effective and also enable increased business competitiveness. We continue to mature and advance in terms of environmental awareness and management to actively conserve our natural environment whilst still maintaining strong economic growth. Our objective is to conserve our natural environment to achieve, if not exceed, our commitments and our Client’s commitments to environmental protection and awareness.",
     ],
   },
-  {
-    id: "ducted-cooling-repair-signs",
-    title: "Signs Your Ducted Cooling System Needs Professional Repair",
-    summary:
-      "Unusual sounds, warm airflow, and uneven temperatures are common warning signs that your ducted system needs attention.",
-    content: [
-      "If one part of your home is significantly warmer than others, your zoning, ductwork, or return airflow may need inspection.",
-      "Buzzing, rattling, or high-pitch noises can indicate loose parts, fan issues, or electrical faults that should be checked quickly.",
-      "A sudden spike in energy bills is often linked to poor system efficiency caused by clogged filters, duct leaks, or failing components.",
-    ],
-  },
-  {
-    id: "commercial-hvac-maintenance-checklist",
-    title: "Commercial HVAC Maintenance Checklist for Business Owners",
-    summary:
-      "A structured maintenance plan keeps commercial HVAC equipment reliable, compliant, and cost-efficient all year.",
-    content: [
-      "Schedule quarterly inspections for rooftop units, thermostats, air handlers, and building management controls.",
-      "Replace filters on time and document static pressure and airflow readings to maintain healthy indoor air quality.",
-      "Keep a maintenance log with all service records to support warranty claims and reduce emergency downtime.",
-    ],
-  },
-  {
-    id: "evaporative-vs-split-system",
-    title: "Evaporative Cooling vs Split Systems: Which Is Better?",
-    summary:
-      "Both systems are effective, but climate, installation cost, and usage goals determine the right option for your property.",
-    content: [
-      "Evaporative cooling can be very energy-efficient in dry climates and delivers fresh airflow throughout a home.",
-      "Split systems provide precise room-by-room control and perform well in humid conditions where evaporative units are less effective.",
-      "A site assessment helps determine insulation needs, room load requirements, and long-term operating costs before installation.",
-    ],
-  },
-  {
-    id: "preventive-maintenance-long-term-savings",
-    title: "Why Preventive HVAC Maintenance Saves Long-Term Costs",
-    summary:
-      "Routine maintenance reduces emergency repairs, extends equipment life, and protects day-to-day comfort.",
-    content: [
-      "Preventive service minimizes strain on key components, which lowers the risk of peak-season breakdowns.",
-      "Well-maintained units consume less power for the same cooling output, reducing monthly utility expenses.",
-      "For both residential and commercial sites, scheduled maintenance is one of the highest-ROI HVAC decisions.",
-    ],
-  },
+  
+{
+  id: "commercial-hvac-maintenance-checklist",
+  title: "How Much Does Ducted Heating Repair Cost in Australia?",
+  summary:
+    "When winter sets in across Australia, a reliable ducted heating system is essential for comfort. So when your heater stops working, or doesn’t perform the way it should, it’s not just inconvenient; it can quickly become urgent. One of the first questions homeowners ask is: How much does ducted heating repair cost in Australia? The answer depends on several factors, including the type of system you have, the nature of the fault, how old the unit is, and whether the issue is caught early or left to worsen. In some cases, a straightforward repair restores full performance. In others, homeowners must consider whether ducted heater replacement is the more cost-effective long-term option. This guide breaks down typical repair costs, common faults, what influences pricing, and how to decide between repairing and replacing your ducted heating system.",
+
+  content: [
+    "What Ducted Heating Is and Why Repairs Are Common",
+
+    "Ducted heating systems (whether gas ducted heating or ducted reverse-cycle systems) are complex. They rely on multiple components working together, including:",
+
+    "• A central heater or heat pump",
+    "• Fans and motors",
+    "• Heat exchangers or compressors",
+    "• Electrical and control systems",
+    "• Ductwork throughout the home",
+
+    "Because these systems operate for long periods during winter, wear and tear is inevitable. Even well-maintained units may eventually require professional ducted heating repair.",
+
+    "Average Cost of Ducted Heating Repair in Australia",
+
+    "While prices vary between states and service providers, here are general cost ranges Australian homeowners can expect.",
+
+    "Initial Callout and Diagnosis",
+
+    "Most ducted heating repairs begin with a callout and diagnostic assessment, costing between $100 and $300 depending on distance and the company (choosing local helps lower the cost).",
+
+    "This typically covers:",
+
+    "• Travel to the property",
+    "• System inspection",
+    "• Fault identification",
+
+    "This cost applies even if repairs aren’t completed immediately.",
+
+    "Minor Ducted Heating Repairs",
+
+    "Minor issues are usually the least expensive to fix and often cost between $100 and $300. These include:",
+
+    "• Thermostat faults",
+    "• Loose wiring",
+    "• Blocked filters",
+    "• Sensor issues",
+    "• Resetting safety switches",
+
+    "These repairs are often completed in a single visit and are far cheaper than major component failures.",
+
+    "Moderate Repairs",
+
+    "Moderate ducted heating repair work may involve:",
+
+    "• Fan motor replacement",
+    "• Ignition or gas valve issues",
+    "• Control board replacement",
+    "• Zone damper repairs",
+
+    "Costs rise depending on labour time and parts availability, but repairs are still generally economical for newer systems.",
+
+    "Major Repairs",
+
+    "Major repairs often involve critical components such as:",
+
+    "• Heat exchangers",
+    "• Main circuit boards",
+    "• Blower motors",
+    "• Gas components",
+
+    "At this stage, repair costs can approach a significant percentage of the cost of ducted heater replacement, especially if the system is older.",
+  ],
+},
+{
+  id: "regular-ac-servicing-benefits",
+  title: "Why Regular AC Servicing Saves You Money",
+  summary:
+    "Many homeowners only think about their air conditioner when it stops working. But regular servicing can actually prevent expensive repairs and help your system run more efficiently throughout the year.",
+
+  content: [
+    "The Value of AC Maintenance",
+
+    "In hot weather, air coolers put in a lot of effort. Dust, filth, and worn components may gradually lower system performance.",
+
+    "Without servicing, small problems can turn into major repairs." ,
+
+    "Benefits of Regular Servicing" ,
+
+    "• Better cooling performance" ,
+    "• Lower electricity bills" , 
+    "• Fewer breakdowns" ,
+    "• Longer system lifespan" ,
+    "• Improved indoor air quality" ,
+
+    "Professional servicing also helps identify issues before they become expensive problems." ,
+
+    "How Often Should You Service Your AC?" ,
+
+    "Most systems should be serviced at least once every year. Homes using AC daily may require more frequent maintenance.",
+
+    "Final Thoughts",
+
+    "Regular maintenance keeps your air conditioner running smoothly and helps avoid unexpected repair costs during summer."
+  ],
+},
+ {
+  id: "ac-not-cooling-properly",
+  title: "Why Your AC Is Not Cooling Properly",
+  summary:
+    "Sometimes an air conditioner runs all day but still doesn’t cool the room properly. In many cases, the problem starts small and becomes worse over time if ignored.",
+
+  content: [
+    "Dirty Air Filters",
+
+    "One of the most common reasons is a dirty filter. When dust blocks airflow, cool air cannot move properly through the room.",
+
+    "Low Refrigerant",
+
+    "If refrigerant levels are low, the system may struggle to produce cold air.",
+
+    "Thermostat Problems",
+
+    "Sometimes the thermostat setting is incorrect or not working properly.",
+
+    "Outdoor Unit Issues",
+
+    "The outdoor unit needs proper airflow. Dirt, leaves, or blocked space around the unit can affect cooling performance.",
+
+    "When to Call a Technician",
+
+    "If cleaning the filters does not solve the issue, it is best to contact a professional technician before the problem becomes bigger.",
+
+    "Final Thoughts",
+
+    "Regular servicing helps prevent cooling problems and keeps your AC working efficiently during hot weather."
+  ],
+},
+{
+  id: "high-ac-electricity-bills",
+  title: "Common Reasons for High AC Electricity Bills",
+  summary:
+    "Many homeowners notice higher electricity bills during summer. In some cases, the air conditioner may be using more power than necessary because of maintenance or usage issues.",
+
+  content: [
+    "Dirty Filters",
+
+    "Blocked filters reduce airflow and force the system to work harder.",
+
+    "Old Air Conditioner",
+
+    "Older systems are generally less energy efficient than newer models.",
+
+    "Low Maintenance",
+
+    "Lack of servicing can reduce system efficiency over time.",
+
+    "Running the AC All Day",
+
+    "Keeping the temperature extremely low for long periods increases electricity usage.",
+
+    "Poor Room Insulation",
+
+    "Cool air can escape through open doors, windows, or poorly sealed rooms.",
+
+    "Final Thoughts",
+
+    "Simple maintenance and proper usage habits can help reduce electricity bills and improve cooling performance."
+  ],
+},
 ];

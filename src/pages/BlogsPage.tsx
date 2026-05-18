@@ -45,7 +45,7 @@ const BlogsPage = () => {
     <main className="section-padding">
       <div className="section-container max-w-4xl">
         <header className="mb-10">
-          <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">AirCool Dynamics HVAC Blog</h1>
+          <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">AirCool Dynamics Blogs</h1>
           <p className="text-muted-foreground leading-relaxed">
             Expert guides and practical tips for air conditioning installation, HVAC maintenance, commercial cooling, and system repairs.
           </p>
