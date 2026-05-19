@@ -63,7 +63,7 @@ const AboutPage = () => {
     <div className="max-w-6xl mx-auto">
 
      {/* Top Section */}
-<div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 items-start">
+<div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-10 items-start">
 
   {/* Left Side */}
   <div className="space-y-4">
@@ -81,21 +81,28 @@ const AboutPage = () => {
       </h2>
     </div>
 
-    {/* Mobile/Tablet Video */}
-    <div className="flex justify-center lg:hidden w-full">
-      <div className="w-full sm:w-[90%] md:w-[80%] rounded-2xl overflow-hidden shadow-lg">
+ {/* Mobile/Tablet Video */}
+<div className="flex justify-center lg:hidden w-full my-4">
 
-        <video
-          src={aboutVideo as string}
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-[280px] md:h-[320px] object-cover"
-        />
+  <div className="w-full max-w-[650px] rounded-2xl overflow-hidden shadow-lg">
 
-      </div>
-    </div>
+    <video
+      src={aboutVideo as string}
+      autoPlay
+      loop
+      muted
+      playsInline
+      className="
+        w-full
+        aspect-video
+        object-cover
+        rounded-2xl
+      "
+    />
+
+  </div>
+
+</div>
 
     {/* Paragraph Content */}
     <div className="space-y-2">
@@ -112,35 +119,45 @@ const AboutPage = () => {
         even upgrades if your old unit just isn't doing the job anymore.
       </p>
 
-      <p className="text-muted-foreground leading-7 text-justify">
-        Our team doesn't believe in rushing through work just to move on
-        to the next job.
-      </p>
+     <p className="text-muted-foreground leading-7 text-justify">
+  Our team doesn't believe in rushing through work just to move on
+  to the next job.
+</p>
+
+
 
     </div>
 
   </div>
 
   {/* Desktop Video Only */}
-  <div className="hidden lg:flex justify-end w-full">
-    <div className="w-full rounded-2xl overflow-hidden shadow-lg">
+<div className="hidden lg:flex justify-center items-start w-full">
+  
+  <div className="w-full max-w-[520px] rounded-2xl overflow-hidden shadow-lg">
 
-      <video
-        src={aboutVideo as string}
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="w-full h-[320px] object-cover"
-      />
+    <video
+      src={aboutVideo as string}
+      autoPlay
+      loop
+      muted
+      playsInline
+      className="
+        w-full
+        aspect-video
+        object-contain
+        bg-black
+      "
+    />
 
-    </div>
   </div>
+
+</div>
 
 </div>
 
 {/* Bottom Content */}
 <div className="mt-2 space-y-2">
+  
   <p className="text-muted-foreground leading-7 text-justify">
     We take extra care to make sure everything is
     running properly before we leave. It saves you trouble later,

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin } from "lucide-react";
-import logo from "@/assets/AirCool-LOGO.jpeg";
+import logo from "../assets/AirCool-LOGO-removebg.png";
 
 const Footer = () => {
   return (

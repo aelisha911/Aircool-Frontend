@@ -73,21 +73,21 @@ const ContactPage = () => {
                     <div className="grid sm:grid-cols-2 gap-5">
                       <div>
                         <label className="text-sm font-medium text-foreground mb-1.5 block">Full Name</label>
-                        <Input placeholder="John Doe" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required />
+                        <Input placeholder="enter your name..." value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required />
                       </div>
                       <div>
                         <label className="text-sm font-medium text-foreground mb-1.5 block">Email</label>
-                        <Input type="email" placeholder="john@example.com" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required />
+                        <Input type="email" placeholder="enter your email..." value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required />
                       </div>
                     </div>
                     <div className="grid sm:grid-cols-2 gap-5">
                       <div>
                         <label className="text-sm font-medium text-foreground mb-1.5 block">Phone</label>
-                        <Input type="tel" placeholder="(123) 456-7890" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} />
+                        <Input type="tel" placeholder="enter your phone number..." value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} />
                       </div>
                       <div>
                         <label className="text-sm font-medium text-foreground mb-1.5 block">City</label>
-                        <Input placeholder="Melbourne" value={form.city} onChange={(e) => setForm({ ...form, city: e.target.value })} />
+                        <Input placeholder="enter your city..." value={form.city} onChange={(e) => setForm({ ...form, city: e.target.value })} />
                       </div>
                     </div>
                     <div>
@@ -110,7 +110,8 @@ const ContactPage = () => {
                       { icon: MapPin, text: "123 Climate Street, Melbourne VIC 3000" },
                       { icon: Phone, text: "0490 089 857" },
                       { icon: Mail, text: "aircooldynamics@gmail.com" },
-                      { icon: Clock, text: "Mon–Fri: 7am–6pm | Emergency: 24/7" },
+                      { icon: Clock, text: "Mon-Fri: 7am–6pm, Sat-Sun: 9am–3pm" },
+                    
                     ].map((item) => (
                       <li key={item.text} className="flex items-start gap-3">
                         <div className="w-9 h-9 rounded-lg bg-accent flex items-center justify-center shrink-0">
