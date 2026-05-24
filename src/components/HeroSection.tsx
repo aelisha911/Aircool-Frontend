@@ -23,7 +23,7 @@ const HeroSection = () => {
           </h1>
 
           <p className="text-lg md:text-xl leading-relaxed mb-8 text-primary-foreground/80 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
-            Expert heating, cooling, and refrigeration services for homes and businesses. Available on 7 Days.
+           Expert heating, cooling, and refrigeration services across Adelaide. We deliver reliable, energy-efficient solutions for both homes and businesses, Available 7 days a week for your convenience.
           </p>
 
           <div className="flex flex-wrap gap-3 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>

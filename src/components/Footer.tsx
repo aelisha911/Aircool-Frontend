@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import logo from "../assets/AirCool-LOGO-removebg.png";
 
 const Footer = () => {
@@ -36,19 +36,58 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Services */}
-          <div>
-            <h4 className="font-heading font-bold text-sm uppercase tracking-wider mb-4 text-background/90">Services</h4>
-            <ul className="space-y-2.5">
-              {["Heating & Cooling", "Maintenance", "Installation", "Repair", "Evaporative Cooler", "Coolroom","Split Type AC Unit","Central Ducted Air Conditioning"].map((s) => (
-                <li key={s}>
-                  <Link to="/services" className="text-sm text-background/75 hover:text-sky-200 transition-all duration-200 hover:translate-x-0.5 inline-block">
-                    {s}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+        {/* Services */}
+<div>
+  <h4 className="font-heading font-bold text-sm uppercase tracking-wider mb-4 text-background/90">
+    Services
+  </h4>
+
+  <ul className="space-y-2.5">
+    {[
+      {
+        label: "Heating & Cooling",
+        path: "/services/heating-cooling",
+      },
+      {
+        label: "Service & Maintenance",
+        path: "/services/service-maintenance",
+      },
+      {
+        label: "Installation",
+        path: "/services/installation-services",
+      },
+      {
+        label: "Central Ducted Air Conditioning",
+        path: "/services/central-ducted-air-conditioning",
+      },
+      {
+        label: "Split Type AC Unit",
+        path: "/services/split-type-air-conditioning-unit",
+      },
+      {
+        label: "Evaporative Cooler",
+        path: "/services/evaporative-cooler",
+      },
+      {
+        label: "Fridge & Coolroom",
+        path: "/services/fridge-coolroom",
+      },
+      {
+        label: "Replacement",
+        path: "/services/replacement",
+      },
+    ].map((service) => (
+      <li key={service.path}>
+        <Link
+          to={service.path}
+          className="text-sm text-background/75 hover:text-sky-200 transition-all duration-200 hover:translate-x-0.5 inline-block"
+        >
+          {service.label}
+        </Link>
+      </li>
+    ))}
+  </ul>
+</div>
 
           {/* Contact */}
           <div>
@@ -56,7 +95,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="group flex items-start gap-2.5 transition-colors duration-200">
                 <MapPin size={16} className="mt-0.5 shrink-0 text-background/70 group-hover:text-background" />
-                <span className="text-sm text-background/80 group-hover:text-background">123 Climate Street, Melbourne VIC 3000</span>
+                <span className="text-sm text-background/80 group-hover:text-background">Eversley Ave, Enfield SA 5085</span>
               </li>
               <li className="group flex items-center gap-2.5">
                 <Phone size={16} className="shrink-0 text-background/70 group-hover:text-background transition-colors duration-200" />
@@ -66,6 +105,16 @@ const Footer = () => {
                 <Mail size={16} className="shrink-0 text-background/70 group-hover:text-background transition-colors duration-200" />
                 <a href="mailto:aircooldynamics@gmail.com" className="text-sm text-background/75 hover:text-sky-200 transition-colors duration-200">aircooldynamics@gmail.com</a>
               </li>
+              <li className="group flex items-center gap-2.5">
+    <Clock
+      size={16}
+      className="shrink-0 text-background/70 group-hover:text-background transition-colors duration-200"
+    />
+    <span className="text-sm text-background/75">
+      Mon-Fri: 7am–6pm, <br />
+      Sat-Sun: 9am–3pm
+    </span>
+  </li>
             </ul>
           </div>
         </div>

@@ -57,7 +57,7 @@ const ContactPage = () => {
             </h1>
 
             <p className="mx-auto max-w-3xl text-base leading-relaxed text-white/85 md:text-xl">
-              From urgent repairs to new installations, our certified HVAC team is ready to help. Send us your details and we&apos;ll get back to you quickly.
+              From repairs to new installations, our certified HVAC team is ready to help. Send us your details and we&apos;ll get back to you quickly.
             </p>
           </div>
         </section>
@@ -107,7 +107,7 @@ const ContactPage = () => {
                   <h3 className="font-heading font-bold text-foreground mb-4">Contact Info</h3>
                   <ul className="space-y-4">
                     {[
-                      { icon: MapPin, text: "123 Climate Street, Melbourne VIC 3000" },
+                      { icon: MapPin, text: "Eversley Ave, Enfield SA 5085" },
                       { icon: Phone, text: "0490 089 857" },
                       { icon: Mail, text: "aircooldynamics@gmail.com" },
                       { icon: Clock, text: "Mon-Fri: 7am–6pm, Sat-Sun: 9am–3pm" },
@@ -125,13 +125,20 @@ const ContactPage = () => {
 
                 {/* Map placeholder */}
                 <div className="bg-card rounded-xl overflow-hidden card-elevated">
-                  <div className="aspect-[4/3] bg-muted flex items-center justify-center">
-                    <div className="text-center">
-                      <MapPin size={32} className="text-muted-foreground mx-auto mb-2" />
-                      <p className="text-sm text-muted-foreground">Google Maps Placeholder</p>
-                    </div>
-                  </div>
-                </div>
+  <div className="aspect-[4/3]">
+    <iframe
+      title="Google Map"
+      src="https://www.google.com/maps?q=Eversley+Ave,+Enfield+SA+5085,+Australia&output=embed"
+      width="100%"
+      height="100%"
+      style={{ border: 0 }}
+      allowFullScreen
+      loading="lazy"
+      referrerPolicy="no-referrer-when-downgrade"
+      className="w-full h-full"
+    />
+  </div>
+</div>
               </div>
             </div>
           </div>

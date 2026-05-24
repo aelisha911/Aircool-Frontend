@@ -36,12 +36,12 @@ const AboutPage = () => {
               </p>
 
               <h1 className="mb-6 text-4xl font-extrabold leading-tight text-white md:text-6xl">
-                Built For Better Air,
+                Built for Better Air,
                 <span className="block text-sky-200">Powered by AirCool Dynamics</span>
               </h1>
 
               <p className="mx-auto mb-8 max-w-3xl text-base leading-relaxed text-white/85 md:text-xl">
-                We help homes and businesses stay comfortable year-round with smart HVAC design, expert installation, and dependable support from certified technicians.
+              At AirCool Dynamics, we provide professional heating, cooling, and air conditioning services across Adelaide. Our focus is simple keeping homes and businesses comfortable all year round through quality workmanship, reliable service, and practical HVAC solutions delivered by fully qualified technicians.
               </p>
 
               <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -77,7 +77,7 @@ const AboutPage = () => {
       <h2 className="text-xl md:text-4xl font-bold text-foreground leading-tight">
         Built on Trust,
         <br />
-        Driven by Excellence
+        Driven by Quality Workmanship
       </h2>
     </div>
 
@@ -108,21 +108,13 @@ const AboutPage = () => {
     <div className="space-y-2">
 
       <p className="text-muted-foreground leading-7 text-justify mt-4">
-        At Air Cool Dynamics, we've been working with air conditioning
-        systems for quite a few years now, and honestly, we've seen
-        just about everything from small fixes to complete system
-        breakdowns.
+       At AirCool Dynamics, we have been working in the air conditioning and HVAC industry for many years, handling everything from minor repairs to complete system replacements and installations.
+
       </p>
 
       <p className="text-muted-foreground leading-7 text-justify">
-        We help with installation, repairs, regular servicing, and
-        even upgrades if your old unit just isn't doing the job anymore.
+        Our services include installation, repairs, routine servicing, and system upgrades for both residential and commercial properties. Whether your system needs a quick fix or a full replacement, we provide honest advice and practical solutions that suit your needs and budget.
       </p>
-
-     <p className="text-muted-foreground leading-7 text-justify">
-  Our team doesn't believe in rushing through work just to move on
-  to the next job.
-</p>
 
 
 
@@ -158,23 +150,18 @@ const AboutPage = () => {
 {/* Bottom Content */}
 <div className="mt-2 space-y-2">
   
+     <p className="text-muted-foreground leading-7 text-justify">
+  We take pride in doing the job properly. Every installation and service is carried out with care and attention to detail to ensure your system is running efficiently and safely before we leave.
+</p>
+
   <p className="text-muted-foreground leading-7 text-justify">
-    We take extra care to make sure everything is
-    running properly before we leave. It saves you trouble later,
-    and that's what really matters.
+   We also understand that heating and cooling issues can happen at the most inconvenient times, especially during extreme weather in Adelaide. That’s why we aim to provide prompt, reliable service when you need it most.
   </p>
 
   <p className="text-muted-foreground leading-7 text-justify">
-    We also understand that AC issues usually come at the worst time,
-    especially during extreme heat, so we do our best to be available
-    when you actually need us.
+    At the end of the day, our goal is simple to make sure our customers feel comfortable and confident knowing their system is in the hands of experienced, trustworthy professionals.
   </p>
 
-  <p className="text-muted-foreground leading-7 text-justify">
-    At the end of the day, we just want our customers to feel
-    comfortable not only because their AC is working, but because
-    they know they called the right people.
-  </p>
 </div>
 
       {/* Button */}
@@ -218,8 +205,7 @@ const AboutPage = () => {
                 <h3 className="text-xl font-bold text-foreground mb-3">Our Mission</h3>
                 <p className="text-muted-foreground leading-relaxed">
              
-                  To provide outstanding HVAC services with a focus on long-term value, energy efficiency, and customer comfort. Our goal is to be the first choice for all refrigeration, heating, and cooling needs.
-
+                 To deliver high-quality heating, cooling, and refrigeration services with a strong focus on long-term value, energy efficiency, and customer comfort. Our goal is to be the trusted first choice for all HVAC solutions across Adelaide.
                 </p>
               </div>
               <div className="bg-card rounded-xl p-8 card-elevated">
@@ -228,7 +214,7 @@ const AboutPage = () => {
                 </div>
                 <h3 className="text-xl font-bold text-foreground mb-3">Our Vision</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  To lead the HVAC industry in innovation, sustainability, and customer service. We envision a future where every space is perfectly climate-controlled with minimal environmental impact.
+                  To be a leading provider in the HVAC industry through innovation, sustainability, and exceptional customer service. We aim to create comfortable indoor environments while reducing environmental impact through energy-efficient solutions.
                 </p>
               </div>
             </div>

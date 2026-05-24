@@ -11,7 +11,7 @@ export interface Service {
   slug: string;
   title: string;
   shortDescription: string;
-  fullDescription: string;
+  fullDescription: string[];
   benefits: string[];
   image: string;
   icon: string;
@@ -22,13 +22,18 @@ export const services: Service[] = [
   slug: "heating-cooling",
   title: "Heating & Cooling",
   shortDescription: "Climate control solutions for homes and businesses include energy-efficient heating and cooling systems.",
-  fullDescription: "Our heating and conditioning services provide total climate management for both residential and commercial buildings. From ductless mini-splits to central air systems, we design and implement solutions that are tailored to your space and budget. Our energy-efficient technology helps reduce electricity costs while maintaining comfortable conditions throughout the year.",
+  fullDescription: [
+    "Keep your home or business comfortable all year round with our professional heating and air conditioning solutions.We specialise in supplying, installing, servicing, and maintaining high-quality systems for both residential and commercial properties across Adelaide.",
+    "Whether you need a ducted air conditioning system, split system installation, or an energy-efficient upgrade, our experienced team provides customised solutions tailored to your space, lifestyle, and budget.We work with reliable, modern technology designed to deliver maximum comfort while helping reduce your energy costs."
+  ],
   benefits: [
-    "Energy-efficient systems",
-    "Tailored climate solutions",
-    "Comfort all year long",
-    "Reduced utility costs",
-    "Smart thermostat integration"
+    "Energy-efficient heating and cooling systems",
+    "Custom solutions for homes and businesses",
+    "Reliable comfort in every season",
+    "Reduced electricity bills",
+    "Smart thermostat integration",
+    "Professional installation and ongoing support",
+    "Quality workmanship and trusted service"
   ],
   image: serviceHeatingCooling,
   icon: "Thermometer",
@@ -37,12 +42,15 @@ export const services: Service[] = [
   slug: "service-maintenance",
   title: "Service & Maintenance",
   shortDescription: "Regular HVAC maintenance to ensure efficient functioning and prevent costly problems.",
-  fullDescription: "The secret to a long-lasting, effective HVAC system is routine maintenance. To identify problems before they become expensive repairs, our experienced technicians conduct comprehensive inspections, cleanings, and tune-ups. Our maintenance programs include refrigerant inspections, coil cleaning, filter replacement, and complete system diagnostics to keep your system running smoothly.",
+  fullDescription:[ 
+    "Regular maintenance is the key to keeping your heating, ventilation and air conditioning (HVAC) system running efficiently and reliably for years to come. Our qualified technicians carry out thorough inspections, cleaning, and servicing to identify any potential issues early—before they turn into costly repairs.",
+    "Our maintenance service includes refrigerant checks, coil cleaning, filter replacement, and full system diagnostics to ensure your system continues to operate at peak performance all year round."
+  ],
   benefits: [
-    "Longer lifespan of equipment",
-    "Reduced energy costs",
-    "Reduced malfunctions",
-    "Priority scheduling"
+    "Longer lifespan of your equipment",
+    "Lower energy bills through improved efficiency",
+    "Fewer breakdowns and system faults",
+    "Priority booking for maintenance and repairs"
   ],
   image: serviceMaintenance,
   icon: "Wrench",
@@ -51,13 +59,16 @@ export const services: Service[] = [
   slug: "installation-services",
   title: "Installation Services",
   shortDescription: "Expert HVAC installation services ensuring precision, efficiency, and long-term reliability for your systems.",
-  fullDescription: "Our installation crew consistently delivers precise and high-quality work, whether you're installing new systems or replacing outdated ones. From load calculations and ductwork design to final commissioning, we handle every step with care. Each installation meets or exceeds industry standards and is backed by our satisfaction guarantee for complete peace of mind.",
+  fullDescription: [
+    "Our installation team delivers high-quality, precise workmanship for both new air conditioning systems and replacement of existing units. From detailed load calculations and ducted system design through to final commissioning, we manage the entire process with care and attention to detail.",
+"Every installation is completed to meet Australian standards and manufacturer requirements, ensuring reliable performance, energy efficiency, and long-term peace of mind."
+  ],
   benefits: [
-    "Professional load computations",
-    "Code-compliant setup",
-    "Respect for manufacturer warranties",
-    "Work that is neat and orderly",
-    "After-install assistance"
+    "Accurate load calculations for the right system size",
+    "Fully compliant installation with Australian standards",
+    "Protects manufacturer warranties",
+    "Clean, tidy, and professional workmanship",
+    "Ongoing support after installation"
   ],
   image: serviceInstallation,
   icon: "Settings",
@@ -66,13 +77,16 @@ export const services: Service[] = [
   slug: "central-ducted-air-conditioning",
   title: "Central Ducted Air Conditioning",
   shortDescription: "Efficient whole-building cooling solutions with advanced central ducted air conditioning systems.",
-  fullDescription: "Our central ducted air conditioning services provide powerful and energy-efficient cooling for residential, commercial, and industrial spaces. We specialize in installation, maintenance, and repair of centralized HVAC systems designed to distribute cool air evenly throughout the property. Our skilled technicians ensure smooth performance, lower energy consumption, and long-lasting comfort with high-quality components and professional servicing.",
+  fullDescription: [
+    "Our central ducted air conditioning solutions provide powerful, energy-efficient cooling for homes, businesses, and industrial spaces. We specialise in the installation, servicing, and repairs of ducted systems designed to deliver consistent, even airflow throughout your entire property.",
+    "Our qualified technicians ensure your system runs efficiently, quietly, and reliably, helping you stay comfortable while keeping energy usage under control. We use quality components and provide professional maintenance to maximise performance and system lifespan."
+  ],
   benefits: [
-    "Uniform cooling across all rooms",
-    "Energy-efficient performance",
-    "Low noise operation",
+    "Even cooling across all rooms",
+    "Energy-efficient operation",
+    "Quiet and unobtrusive performance",
     "Professional installation and servicing",
-    "Reliable maintenance support"
+    "Reliable ongoing maintenance and support Split System Air Conditioning Services"
   ],
   image: serviceCentralDucted,
   icon: "Building2",
@@ -82,13 +96,16 @@ export const services: Service[] = [
   slug: "split-type-air-conditioning-unit",
   title: "Split Type Air Conditioning Unit",
   shortDescription: "Modern split AC solutions designed for efficient and quiet cooling performance.",
-  fullDescription: "We provide complete split type air conditioning unit services including installation, repair, gas refilling, and maintenance. Split AC systems are ideal for homes, offices, and commercial spaces, delivering fast cooling with energy-saving technology. Our experienced technicians ensure proper setup and reliable servicing to keep your unit performing efficiently throughout the year.",
+  fullDescription: [
+    "We provide complete split system air conditioning services, including installation, repairs, gas recharging, and ongoing maintenance. Split systems are a popular choice for homes, offices, and commercial spaces across Australia, offering fast, efficient cooling with excellent energy performance.",
+    "Our experienced technicians ensure every system is installed and serviced correctly for reliable, long-term operation. Whether it’s a new installation or routine maintenance, we help keep your air conditioner running efficiently all year round."
+  ],
   benefits: [
-    "Fast and efficient cooling",
+    "Fast and effective cooling",
     "Quiet indoor operation",
-    "Energy-saving technology",
-    "Quick installation service",
-    "Affordable maintenance solutions"
+    "Energy-efficient performance",
+    "Prompt and professional installation",
+    "Cost-effective maintenance and servicing"
   ],
   image: serviceSplitAC,
   icon: "Wind",
@@ -97,8 +114,12 @@ export const services: Service[] = [
     slug: "evaporative-cooler",
     title: "Evaporative Cooler",
     shortDescription: "Eco-friendly evaporative cooling solutions that use natural processes to cool your space efficiently.",
-    fullDescription: "Evaporative coolers are an energy-efficient, eco-friendly alternative to traditional air conditioning. Perfect for dry climates, these systems use the natural process of water evaporation to cool air. We install, service, and repair all major brands of evaporative coolers for both residential and commercial applications.",
-    benefits: ["Up to 80% less energy", "Eco-friendly cooling", "Fresh air circulation", "Low maintenance costs", "Ideal for dry climates"],
+    fullDescription: [
+      "Our central ducted air conditioning solutions provide powerful, energy-efficient cooling for homes, businesses, and industrial spaces. We specialise in the installation, servicing, and repairs of ducted systems designed to deliver consistent, even airflow throughout your entire property.",
+
+      "Our qualified technicians ensure your system runs efficiently, quietly, and reliably, helping you stay comfortable while keeping energy usage under control. We use quality components and provide professional maintenance to maximise performance and system lifespan."
+    ],
+    benefits: ["Up to 80% lower energy use compared to refrigerated air conditioning", "Eco-friendly cooling designed for Adelaide’s dry conditions", "Continuous flow of fresh, filtered air", "Low running and maintenance costs", "Ideal for Adelaide’s hot, dry summers"],
     image: serviceEvaporative,
     icon: "Wind",
   },
@@ -106,8 +127,12 @@ export const services: Service[] = [
     slug: "fridge-coolroom",
     title: "Fridge & Coolroom",
     shortDescription: "Commercial refrigeration and cool room services for restaurants, warehouses, and food storage facilities.",
-    fullDescription: "From restaurant walk-in coolers to warehouse cold storage, we provide comprehensive commercial refrigeration services. Our team specializes in installation, maintenance, and repair of coolrooms, freezer rooms, and commercial refrigeration units. We ensure your products stay at the perfect temperature.",
-    benefits: ["Temperature monitoring", "Energy-efficient units", "Compliance with food safety", "Custom coolroom design", "Emergency breakdown service"],
+    fullDescription: [
+      "From restaurant walk-in coolrooms to large warehouse cold storage, we provide complete commercial refrigeration solutions across Adelaide. Our experienced team specialises in the installation, servicing, and repair of coolrooms, freezer rooms, and all types of commercial refrigeration systems.",
+
+      "We focus on keeping your equipment running reliably so your stock stays at the correct temperature, helping you meet food safety standards and avoid costly product loss."
+    ],
+    benefits: ["Reliable temperature control and monitoring", "Energy-efficient refrigeration systems", "Full compliance with Australian food safety standards", "Custom-designed coolroom and freezer solutions", "Fast emergency breakdown and repair service"],
     image: serviceCoolroom,
     icon: "Snowflake",
   },
@@ -115,8 +140,12 @@ export const services: Service[] = [
     slug: "replacement",
     title: "Replacement",
     shortDescription: "Install new, energy-efficient equipment to replace your outdated HVAC system. We handle full system replacements seamlessly.",
-    fullDescription: "Our replacement service provides a smooth upgrading path if your HVAC system is out-of-date, inefficient, or beyond repair. We evaluate your existing configuration, provide the finest contemporary substitutes, and take care of the entire removal and installation procedure. Take advantage of the newest smart features, reduced costs, and increased comfort.",
-    benefits: ["The newest technology", "Enhanced effectiveness", "Rebate support", "Smooth transition", "Extensions of warranties"],
+    fullDescription: [
+      "If your heating and cooling system is outdated, inefficient, or beyond repair, our replacement service provides a simple and stress-free upgrade solution. We assess your existing system, recommend modern energy-efficient options, and manage the complete removal and installation process from start to finish.",
+
+      "Upgrade to the latest technology for improved comfort, better performance, and lower running costs, all tailored to suit your home or business."
+    ],
+    benefits: ["Access to the latest energy-efficient technology", "Improved system performance and reliability", "Guidance on available rebates and incentives", "Smooth, hassle-free removal and installation process", "Extended manufacturer warranties on new systems"],
     image: serviceReplacement,
     icon: "RefreshCw",
   },

@@ -33,7 +33,7 @@ const Index = () => {
               </h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {services.slice(0, 6).map((s) => (
+              {services.slice(0, 8).map((s) => (
                 <ServiceCard key={s.slug} service={s} />
               ))}
             </div>

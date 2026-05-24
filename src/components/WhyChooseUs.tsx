@@ -1,12 +1,12 @@
 import { Clock, Shield, ThumbsUp, Users, Zap, Award } from "lucide-react";
 
 const reasons = [
-  { icon: Clock, title: "24/7 Availability", desc: "Round-the-clock emergency service when you need it most." },
-  { icon: Shield, title: "Licensed & Insured", desc: "Fully certified technicians with comprehensive coverage." },
-  { icon: ThumbsUp, title: "Satisfaction Guaranteed", desc: "We stand behind every job with our quality guarantee." },
-  { icon: Users, title: "Experienced Team", desc: "Over 15 years of industry experience and expertise." },
-  { icon: Zap, title: "Fast Response", desc: "Quick diagnosis and same-day service for most repairs." },
-  { icon: Award, title: "Top Rated", desc: "Consistently rated 5 stars by our valued customers." },
+  { icon: Clock, title: "7 Days Availability", desc: "Reliable service available seven days a week for your convenience." },
+  { icon: Shield, title: "Licensed & Insured", desc: "Fully certified technicians with complete insurance coverage." },
+  { icon: ThumbsUp, title: "Satisfaction Guaranteed", desc: "Quality workmanship backed by our service guarantee." },
+  { icon: Users, title: "Experienced Team", desc: "Over 15 years of hands-on industry experience." },
+  { icon: Zap, title: "Fast Response Times ", desc: " Prompt service with quick diagnosis and repairs." },
+  { icon: Award, title: "Highly Rated Service", desc: "Trusted by customers across Adelaide for reliable results." },
 ];
 
 const WhyChooseUs = () => {
@@ -16,7 +16,7 @@ const WhyChooseUs = () => {
         <div className="text-center max-w-2xl mx-auto mb-12">
           <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-2">Why Choose Us</p>
           <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">
-            Trusted by Thousands of Customers
+           Trusted Heating, Cooling & Refrigeration Experts in Adelaide
           </h2>
         </div>
 

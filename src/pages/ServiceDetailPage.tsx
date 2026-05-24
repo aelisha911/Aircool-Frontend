@@ -56,7 +56,16 @@ const ServiceDetailPage = () => {
             <div className="grid lg:grid-cols-3 gap-10">
               <div className="lg:col-span-2">
                 <h2 className="text-2xl font-bold text-foreground mb-4">About This Service</h2>
-                <p className="text-muted-foreground leading-relaxed text-base mb-8">{service.fullDescription}</p>
+               <div className="space-y-5 mb-8">
+  {service.fullDescription.map((paragraph, index) => (
+    <p
+      key={index}
+      className="text-muted-foreground leading-relaxed text-base"
+    >
+      {paragraph}
+    </p>
+  ))}
+</div>
 
                 <h3 className="text-xl font-bold text-foreground mb-4">Key Benefits</h3>
                 <ul className="space-y-3">
