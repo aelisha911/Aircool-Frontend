@@ -1,6 +1,5 @@
 import { FormEvent, useMemo, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
 import { AlertTriangle, PencilLine, Trash2 } from "lucide-react";
 import {
   createAdminDiscount,
@@ -9,7 +8,6 @@ import {
   updateAdminDiscount,
   type AdminDiscount,
 } from "@/services/api";
-import { adminLogout } from "@/lib/adminAuth";
 import { useToast } from "@/hooks/use-toast";
 import {
   Dialog,
@@ -21,7 +19,6 @@ import {
 } from "@/components/ui/dialog";
 
 const AdminDiscountsPage = () => {
-  const navigate = useNavigate();
   const queryClient = useQueryClient();
   const { toast } = useToast();
 
@@ -144,6 +141,9 @@ const AdminDiscountsPage = () => {
     });
   };
 
+  const activeCount = useMemo(() => discounts.filter((discount) => !discount.isInactive).length, [discounts]);
+  const inactiveCount = useMemo(() => discounts.filter((discount) => discount.isInactive).length, [discounts]);
+
   const submitLabel = useMemo(() => {
     if (saveMutation.isPending) {
       return "Saving...";
@@ -176,13 +176,8 @@ const AdminDiscountsPage = () => {
     setFormKey((currentKey) => currentKey + 1);
   };
 
-  const handleLogout = () => {
-    adminLogout();
-    navigate("/admin/login", { replace: true });
-  };
-
   return (
-    <main className="min-h-screen bg-muted/20 px-4 py-8">
+    <div className="bg-muted/20 px-4 py-8">
       <Dialog open={Boolean(discountToDelete)} onOpenChange={(open) => !open && setDiscountToDelete(null)}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader className="items-center text-center sm:items-start sm:text-left">
@@ -218,125 +213,143 @@ const AdminDiscountsPage = () => {
         </DialogContent>
       </Dialog>
 
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-8">
-        <div className="flex flex-col gap-3 rounded-2xl border border-border bg-background p-6 shadow-sm sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <h1 className="text-2xl font-bold text-foreground">Admin Discount Panel</h1>
-            <p className="text-sm text-muted-foreground">Add, edit, and delete discount title and image.</p>
+      <div className="mx-auto w-full max-w-6xl space-y-8">
+        <div className="grid gap-6 rounded-2xl border border-border bg-background p-6 shadow-sm sm:grid-cols-[1.8fr_1fr] sm:items-end">
+          <div className="space-y-3">
+            <div>
+              <h1 className="text-3xl font-bold text-foreground">Admin Discount Panel</h1>
+              <p className="mt-2 text-sm text-muted-foreground">Manage discount assets, activation state, and homepage visibility from one place.</p>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-3">
+              <div className="rounded-2xl border border-border bg-muted/70 p-4">
+                <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">Total discounts</p>
+                <p className="mt-2 text-2xl font-semibold text-foreground">{discounts.length}</p>
+              </div>
+              <div className="rounded-2xl border border-border bg-muted/70 p-4">
+                <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">Active</p>
+                <p className="mt-2 text-2xl font-semibold text-foreground">{activeCount}</p>
+              </div>
+              <div className="rounded-2xl border border-border bg-muted/70 p-4">
+                <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">Inactive</p>
+                <p className="mt-2 text-2xl font-semibold text-foreground">{inactiveCount}</p>
+              </div>
+            </div>
           </div>
-          <button
-            type="button"
-            onClick={handleLogout}
-            className="h-10 rounded-md border border-input px-4 text-sm font-medium text-foreground transition hover:bg-muted"
-          >
-            Logout
-          </button>
+
+          <div className="flex items-center justify-between rounded-2xl border border-border bg-background p-6 shadow-sm sm:flex-col sm:items-end sm:justify-between">
+            <div className="space-y-2 text-right">
+              <p className="text-sm font-semibold text-foreground">Admin controls</p>
+              <p className="text-sm text-muted-foreground">You can edit discounts or add new items below.</p>
+            </div>
+          </div>
         </div>
 
-        <div className="rounded-2xl border border-border bg-background p-6 shadow-sm">
-          <h2 className="text-lg font-semibold text-foreground">{editingDiscount ? "Edit Discount" : "Add Discount"}</h2>
-          <form key={formKey} className="mt-4 grid gap-4" onSubmit={handleSubmit}>
-            <div>
-              <label htmlFor="discount-title" className="mb-1 block text-sm font-medium text-foreground">
-                Title
-              </label>
-              <input
-                id="discount-title"
-                type="text"
-                value={title}
-                onChange={(event) => setTitle(event.target.value)}
-                className="h-11 w-full rounded-md border border-input bg-background px-3 text-sm outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring"
-                placeholder="Summer AC Offer"
-                required
-              />
-            </div>
+        <div className="space-y-6">
+          <div className="rounded-2xl border border-border bg-background p-6 shadow-sm">
+            <h2 className="text-lg font-semibold text-foreground">{editingDiscount ? "Edit Discount" : "Add Discount"}</h2>
+            <form key={formKey} className="mt-4 grid gap-4" onSubmit={handleSubmit}>
+              <div>
+                <label htmlFor="discount-title" className="mb-1 block text-sm font-medium text-foreground">
+                  Title
+                </label>
+                <input
+                  id="discount-title"
+                  type="text"
+                  value={title}
+                  onChange={(event) => setTitle(event.target.value)}
+                  className="h-11 w-full rounded-md border border-input bg-background px-3 text-sm outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring"
+                  placeholder="Summer AC Offer"
+                  required
+                />
+              </div>
 
-            <div>
-              <label htmlFor="discount-image" className="mb-1 block text-sm font-medium text-foreground">
-                Image {editingDiscount ? "(optional for edit)" : ""}
-              </label>
-              <input
-                id="discount-image"
-                type="file"
-                accept="image/*"
-                onChange={(event) => setImageFile(event.target.files?.[0] ?? null)}
-                className="block w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground"
-                required={false}
-              />
-              {editingDiscount && (
-                <div className="mt-3 rounded-lg border border-dashed border-border bg-muted/20 p-3">
-                  {editingDiscount.imageUrl ? (
-                    <img
-                      src={editingDiscount.imageUrl}
-                      alt={editingDiscount.title}
-                      className="h-32 w-full rounded-md object-contain bg-background"
-                    />
-                  ) : (
-                    <div className="flex h-32 items-center justify-center rounded-md bg-background text-sm text-muted-foreground">
-                      No image saved
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
+              <div>
+                <label htmlFor="discount-image" className="mb-1 block text-sm font-medium text-foreground">
+                  Image {editingDiscount ? "(optional for edit)" : ""}
+                </label>
+                <input
+                  id="discount-image"
+                  type="file"
+                  accept="image/*"
+                  onChange={(event) => setImageFile(event.target.files?.[0] ?? null)}
+                  className="block w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground"
+                  required={false}
+                />
+                {editingDiscount && (
+                  <div className="mt-3 rounded-lg border border-dashed border-border bg-muted/20 p-3">
+                    {editingDiscount.imageUrl ? (
+                      <img
+                        src={editingDiscount.imageUrl}
+                        alt={editingDiscount.title}
+                        className="h-32 w-full rounded-md object-contain bg-background"
+                      />
+                    ) : (
+                      <div className="flex h-32 items-center justify-center rounded-md bg-background text-sm text-muted-foreground">
+                        No image saved
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
 
-            <div>
-              <label htmlFor="discount-video-file" className="mb-1 block text-sm font-medium text-foreground">Choose video file (optional)</label>
-              <input
-                id="discount-video-file"
-                type="file"
-                accept="video/*"
-                onChange={(e) => setVideoFile(e.target.files?.[0] ?? null)}
-                className="block w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground"
-              />
-              {editingDiscount && (
-                <div className="mt-3 rounded-lg border border-dashed border-border bg-muted/20 p-3">
-                  {editingDiscount.videoUrl ? (
-                    <video
-                      controls
-                      src={editingDiscount.videoUrl}
-                      className="h-32 w-full rounded-md object-contain bg-background"
-                    />
-                  ) : (
-                    <div className="flex h-32 items-center justify-center rounded-md bg-background text-sm text-muted-foreground">
-                      No video saved
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
+              <div>
+                <label htmlFor="discount-video-file" className="mb-1 block text-sm font-medium text-foreground">Choose video file (optional)</label>
+                <input
+                  id="discount-video-file"
+                  type="file"
+                  accept="video/*"
+                  onChange={(e) => setVideoFile(e.target.files?.[0] ?? null)}
+                  className="block w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground"
+                />
+                {editingDiscount && (
+                  <div className="mt-3 rounded-lg border border-dashed border-border bg-muted/20 p-3">
+                    {editingDiscount.videoUrl ? (
+                      <video
+                        controls
+                        src={editingDiscount.videoUrl}
+                        className="h-32 w-full rounded-md object-contain bg-background"
+                      />
+                    ) : (
+                      <div className="flex h-32 items-center justify-center rounded-md bg-background text-sm text-muted-foreground">
+                        No video saved
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
 
-            <div className="flex items-center gap-2">
-              <input
-                id="discount-inactive"
-                type="checkbox"
-                checked={!isInactive}
-                onChange={(e) => setIsInactive(!e.target.checked)}
-                className="h-4 w-4 rounded border-input bg-background"
-              />
-              <label htmlFor="discount-inactive" className="text-sm text-foreground">Mark as active (show on homepage)</label>
-            </div>
+              <div className="flex items-center gap-2">
+                <input
+                  id="discount-inactive"
+                  type="checkbox"
+                  checked={!isInactive}
+                  onChange={(e) => setIsInactive(!e.target.checked)}
+                  className="h-4 w-4 rounded border-input bg-background"
+                />
+                <label htmlFor="discount-inactive" className="text-sm text-foreground">Mark as active (show on homepage)</label>
+              </div>
 
-            <div className="flex flex-wrap gap-3">
-              <button
-                type="submit"
-                disabled={saveMutation.isPending}
-                className="h-11 rounded-md bg-primary px-5 text-sm font-semibold text-primary-foreground transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
-              >
-                {submitLabel}
-              </button>
-
-              {editingDiscount && (
+              <div className="flex flex-wrap gap-3">
                 <button
-                  type="button"
-                  onClick={handleCancelEdit}
-                  className="h-11 rounded-md border border-input px-5 text-sm font-semibold text-foreground transition hover:bg-muted"
+                  type="submit"
+                  disabled={saveMutation.isPending}
+                  className="h-11 rounded-md bg-primary px-5 text-sm font-semibold text-primary-foreground transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
                 >
-                  Cancel Edit
+                  {submitLabel}
                 </button>
-              )}
-            </div>
-          </form>
+
+                {editingDiscount && (
+                  <button
+                    type="button"
+                    onClick={handleCancelEdit}
+                    className="h-11 rounded-md border border-input px-5 text-sm font-semibold text-foreground transition hover:bg-muted"
+                  >
+                    Cancel Edit
+                  </button>
+                )}
+              </div>
+            </form>
+          </div>
         </div>
 
         <div className="rounded-2xl border border-border bg-background p-6 shadow-sm">
@@ -452,7 +465,7 @@ const AdminDiscountsPage = () => {
           )}
         </div>
       </div>
-    </main>
+    </div>
   );
 };
 

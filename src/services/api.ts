@@ -36,6 +36,15 @@ export type AdminDiscount = {
   isActive?: boolean;
 };
 
+export type AdminReview = {
+  id: string;
+  reviewer?: string;
+  review: string;
+  rating?: number;
+  isInactive?: boolean;
+  isActive?: boolean;
+};
+
 const toAbsoluteUrl = (value?: string) => {
   if (!value) {
     return undefined;
@@ -81,6 +90,23 @@ const pickArrayField = (source: Record<string, unknown>, keys: string[]) => {
     const candidate = source[key];
     if (Array.isArray(candidate)) {
       return candidate;
+    }
+  }
+
+  return undefined;
+};
+
+const pickNumberField = (source: Record<string, unknown>, keys: string[]) => {
+  for (const key of keys) {
+    const candidate = source[key];
+    if (typeof candidate === "number" && !Number.isNaN(candidate)) {
+      return candidate;
+    }
+    if (typeof candidate === "string") {
+      const numberValue = Number(candidate);
+      if (!Number.isNaN(numberValue)) {
+        return numberValue;
+      }
     }
   }
 
@@ -226,6 +252,36 @@ const normalizeAdminDiscount = (source: Record<string, unknown>): AdminDiscount 
   };
 };
 
+const normalizeAdminReview = (source: Record<string, unknown>): AdminReview | null => {
+  const id = pickStringField(source, ["id", "_id", "reviewId", "ReviewId"]);
+  const review = pickStringField(source, ["review", "message", "text", "comment", "feedback"]) ?? "";
+  if (!id || !review) {
+    return null;
+  }
+
+  const reviewer = pickStringField(source, ["reviewer", "name", "author", "customer", "user"]);
+  const rating = pickNumberField(source, ["rating", "stars", "score", "ratingValue"]);
+
+  const isInactive = parseBoolean(
+    source["isInactive"] ?? source["inactive"] ?? source["is_inactive"] ?? source["IsInactive"] ?? source["inactiveFlag"]
+  );
+
+  const isActiveVal = parseBoolean(
+    source["isActive"] ?? source["active"] ?? source["is_active"] ?? source["IsActive"]
+  );
+
+  const finalIsInactive = typeof isActiveVal === "boolean" ? !isActiveVal : isInactive;
+
+  return {
+    id,
+    reviewer,
+    review,
+    rating,
+    isInactive: finalIsInactive,
+    isActive: typeof isActiveVal === "boolean" ? isActiveVal : undefined,
+  };
+};
+
 const extractDiscountItems = (payload: unknown) => {
   if (Array.isArray(payload)) {
     return payload;
@@ -236,7 +292,7 @@ const extractDiscountItems = (payload: unknown) => {
     return [];
   }
 
-  const nestedArray = pickArrayField(payloadObject, ["data", "discounts", "items", "result"]);
+  const nestedArray = pickArrayField(payloadObject, ["data", "discounts", "reviews", "items", "result", "results"]);
   if (nestedArray) {
     return nestedArray;
   }
@@ -376,5 +432,72 @@ export const updateAdminDiscount = (payload: {
 };
 
 export const deleteAdminDiscount = (id: string) => API.delete(`/api/discounts/${id}`);
+
+export const fetchAdminReviews = () =>
+  API.get<unknown>("/api/reviews").then((response) => {
+    const reviewItems = extractDiscountItems(response.data);
+    const normalizedItems: AdminReview[] = [];
+
+    for (const item of reviewItems) {
+      const itemObject = toRecord(item);
+      if (!itemObject) {
+        continue;
+      }
+
+      const normalized = normalizeAdminReview(itemObject);
+      if (normalized) {
+        normalizedItems.push(normalized);
+      }
+    }
+
+    return normalizedItems;
+  });
+
+const buildReviewRequest = (payload: {
+  reviewer?: string;
+  review: string;
+  rating?: number | null;
+  isInactive?: boolean | null;
+}) => {
+  const body: Record<string, unknown> = {
+    review: payload.review,
+  };
+
+  if (typeof payload.reviewer === "string" && payload.reviewer.trim().length > 0) {
+    body.reviewer = payload.reviewer.trim();
+  }
+
+  if (typeof payload.rating !== "undefined" && payload.rating !== null) {
+    body.rating = payload.rating;
+  }
+
+  if (typeof payload.isInactive !== "undefined" && payload.isInactive !== null) {
+    body.isInactive = payload.isInactive;
+    body.isActive = !payload.isInactive;
+    body.active = !payload.isInactive;
+  }
+
+  return body;
+};
+
+export const createAdminReview = (payload: {
+  reviewer?: string;
+  review: string;
+  rating?: number;
+  isInactive?: boolean;
+}) => API.post("/api/reviews", buildReviewRequest(payload));
+
+export const updateAdminReview = (payload: {
+  id: string;
+  reviewer?: string;
+  review: string;
+  rating?: number | null;
+  isInactive?: boolean | null;
+}) => {
+  const body = buildReviewRequest(payload);
+  return API.put(`/api/reviews/${payload.id}`, body);
+};
+
+export const deleteAdminReview = (id: string) => API.delete(`/api/reviews/${id}`);
 
 export default API;
