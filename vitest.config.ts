@@ -4,9 +4,7 @@ import path from "path";
 
 export default defineConfig({
   plugins: [react()],
-    server: {
-    allowedHosts: ["aircool-frontend.onrender.com"],
-  },
+  
   test: {
     environment: "jsdom",
     globals: true,
