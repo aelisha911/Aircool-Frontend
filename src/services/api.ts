@@ -255,7 +255,7 @@ const normalizeAdminDiscount = (source: Record<string, unknown>): AdminDiscount 
 const normalizeAdminReview = (source: Record<string, unknown>): AdminReview | null => {
   const id = pickStringField(source, ["id", "_id", "reviewId", "ReviewId"]);
   const review = pickStringField(source, ["review", "message", "text", "comment", "feedback"]) ?? "";
-  if (!id || !review) {
+  if (!id ) {
     return null;
   }
 
@@ -434,17 +434,22 @@ export const updateAdminDiscount = (payload: {
 export const deleteAdminDiscount = (id: string) => API.delete(`/api/discounts/${id}`);
 
 export const fetchAdminReviews = () =>
-  API.get<unknown>("/api/reviews").then((response) => {
+  API.get("/api/reviews").then((response) => {
+    console.log("API Response:", response.data);
+
     const reviewItems = extractDiscountItems(response.data);
+
     const normalizedItems: AdminReview[] = [];
 
     for (const item of reviewItems) {
+      console.log("Review Item:", item);
+
       const itemObject = toRecord(item);
-      if (!itemObject) {
-        continue;
-      }
 
       const normalized = normalizeAdminReview(itemObject);
+
+      console.log("Normalized:", normalized);
+
       if (normalized) {
         normalizedItems.push(normalized);
       }
@@ -455,16 +460,18 @@ export const fetchAdminReviews = () =>
 
 const buildReviewRequest = (payload: {
   reviewer?: string;
-  review: string;
+  review?: string;
   rating?: number | null;
   isInactive?: boolean | null;
 }) => {
-  const body: Record<string, unknown> = {
-    review: payload.review,
-  };
+  const body: Record<string, unknown> = {};
 
-  if (typeof payload.reviewer === "string" && payload.reviewer.trim().length > 0) {
+  if (typeof payload.reviewer === "string") {
     body.reviewer = payload.reviewer.trim();
+  }
+
+  if (typeof payload.review === "string") {
+    body.review = payload.review.trim();
   }
 
   if (typeof payload.rating !== "undefined" && payload.rating !== null) {
@@ -482,7 +489,7 @@ const buildReviewRequest = (payload: {
 
 export const createAdminReview = (payload: {
   reviewer?: string;
-  review: string;
+  review ?: string;
   rating?: number;
   isInactive?: boolean;
 }) => API.post("/api/reviews", buildReviewRequest(payload));
@@ -490,7 +497,7 @@ export const createAdminReview = (payload: {
 export const updateAdminReview = (payload: {
   id: string;
   reviewer?: string;
-  review: string;
+  review?: string;
   rating?: number | null;
   isInactive?: boolean | null;
 }) => {

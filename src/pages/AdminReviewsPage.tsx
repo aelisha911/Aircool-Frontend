@@ -40,13 +40,11 @@ const AdminReviewsPage = () => {
 
   const saveMutation = useMutation({
     mutationFn: async () => {
-      if (!review.trim()) {
-        throw new Error("Review text is required.");
-      }
+      
 
       const payload = {
         reviewer: reviewer.trim() || undefined,
-        review: review.trim(),
+        review: review.trim() || undefined,
         rating: rating.trim() ? Number(rating) : undefined,
         isInactive: isInactive || undefined,
       };
@@ -132,11 +130,11 @@ const AdminReviewsPage = () => {
   };
 
   const handleStartEdit = (reviewItem: AdminReview) => {
-    setEditingReview(reviewItem);
-    setReviewer(reviewItem.reviewer ?? "");
-    setReview(reviewItem.review);
-    setRating(reviewItem.rating?.toString() ?? "");
-    setIsInactive(Boolean(reviewItem.isInactive));
+   setEditingReview(reviewItem);
+  setReviewer(reviewItem.reviewer ?? "");
+  setReview(reviewItem.review ?? "");
+  setRating(reviewItem.rating?.toString() ?? "");
+  setIsInactive(Boolean(reviewItem.isInactive));
   };
 
   const handleCancelEdit = () => {
@@ -186,37 +184,48 @@ const AdminReviewsPage = () => {
       </Dialog>
 
       <div className="mx-auto w-full max-w-6xl space-y-8">
-        <div className="grid gap-6 rounded-2xl border border-border bg-background p-6 shadow-sm sm:grid-cols-[1.8fr_1fr] sm:items-end">
-          <div className="space-y-3">
-            <div>
-              <h1 className="text-3xl font-bold text-foreground">Admin Review Panel</h1>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Manage review entries and control which reviews appear publicly.
-              </p>
-            </div>
-            <div className="grid gap-4 sm:grid-cols-3">
-              <div className="rounded-2xl border border-border bg-muted/70 p-4">
-                <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">Total reviews</p>
-                <p className="mt-2 text-2xl font-semibold text-foreground">{reviews.length}</p>
-              </div>
-              <div className="rounded-2xl border border-border bg-muted/70 p-4">
-                <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">Active</p>
-                <p className="mt-2 text-2xl font-semibold text-foreground">{activeCount}</p>
-              </div>
-              <div className="rounded-2xl border border-border bg-muted/70 p-4">
-                <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">Inactive</p>
-                <p className="mt-2 text-2xl font-semibold text-foreground">{inactiveCount}</p>
-              </div>
-            </div>
-          </div>
+       <div className="rounded-2xl border border-border bg-background p-6 shadow-sm">
+  <div className="space-y-3">
+    <div>
+      <h1 className="text-3xl font-bold text-foreground">
+        Admin Review Panel
+      </h1>
 
-          <div className="flex items-center justify-between rounded-2xl border border-border bg-background p-6 shadow-sm sm:flex-col sm:items-end sm:justify-between">
-            <div className="space-y-2 text-right">
-              <p className="text-sm font-semibold text-foreground">Admin controls</p>
-              <p className="text-sm text-muted-foreground">Use the sidebar to switch between discounts and reviews.</p>
-            </div>
-          </div>
-        </div>
+      <p className="mt-2 text-sm text-muted-foreground">
+        Manage review entries and control which reviews appear publicly.
+      </p>
+    </div>
+
+    <div className="grid gap-4 sm:grid-cols-3">
+      <div className="rounded-2xl border border-border bg-muted/70 p-4">
+        <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">
+          Total reviews
+        </p>
+        <p className="mt-2 text-2xl font-semibold text-foreground">
+          {reviews.length}
+        </p>
+      </div>
+
+      <div className="rounded-2xl border border-border bg-muted/70 p-4">
+        <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">
+          Active
+        </p>
+        <p className="mt-2 text-2xl font-semibold text-foreground">
+          {activeCount}
+        </p>
+      </div>
+
+      <div className="rounded-2xl border border-border bg-muted/70 p-4">
+        <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">
+          Inactive
+        </p>
+        <p className="mt-2 text-2xl font-semibold text-foreground">
+          {inactiveCount}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
 
         <div className="space-y-6">
           <div className="rounded-2xl border border-border bg-background p-6 shadow-sm">
@@ -233,6 +242,7 @@ const AdminReviewsPage = () => {
                   onChange={(event) => setReviewer(event.target.value)}
                   className="h-11 w-full rounded-md border border-input bg-background px-3 text-sm outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring"
                   placeholder="John Doe"
+                  required
                 />
               </div>
 
@@ -247,7 +257,7 @@ const AdminReviewsPage = () => {
                   onChange={(event) => setReview(event.target.value)}
                   className="w-full rounded-md border border-input bg-background px-3 py-3 text-sm outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring"
                   placeholder="Enter the customer review here"
-                  required
+                  
                 />
               </div>
 
@@ -260,10 +270,12 @@ const AdminReviewsPage = () => {
                   type="number"
                   min={1}
                   max={5}
+                  step="0.1"
                   value={rating}
                   onChange={(event) => setRating(event.target.value)}
-                  className="h-11 w-full rounded-md border border-input bg-background px-3 text-sm outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring"
+                  className="h-11 w-40 rounded-md border border-input bg-background px-3 text-sm outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring"
                   placeholder="5"
+                  
                 />
               </div>
 
@@ -327,8 +339,12 @@ const AdminReviewsPage = () => {
                         {reviewItem.reviewer ?? "Anonymous"}
                       </td>
                       <td className="px-4 py-3 text-sm text-foreground">
-                        {reviewItem.review.length > 100 ? `${reviewItem.review.slice(0, 100)}...` : reviewItem.review}
-                      </td>
+  {reviewItem.review
+    ? reviewItem.review.length > 100
+      ? `${reviewItem.review.slice(0, 100)}...`
+      : reviewItem.review
+    : "—"}
+</td>
                       <td className="px-4 py-3 text-sm text-foreground">
                         {reviewItem.rating ?? "—"}
                       </td>

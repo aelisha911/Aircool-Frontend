@@ -1,4 +1,5 @@
 import { FormEvent, useMemo, useState } from "react";
+
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { AlertTriangle, PencilLine, Trash2 } from "lucide-react";
 import {
@@ -214,36 +215,47 @@ const AdminDiscountsPage = () => {
       </Dialog>
 
       <div className="mx-auto w-full max-w-6xl space-y-8">
-        <div className="grid gap-6 rounded-2xl border border-border bg-background p-6 shadow-sm sm:grid-cols-[1.8fr_1fr] sm:items-end">
-          <div className="space-y-3">
-            <div>
-              <h1 className="text-3xl font-bold text-foreground">Admin Discount Panel</h1>
-              <p className="mt-2 text-sm text-muted-foreground">Manage discount assets, activation state, and homepage visibility from one place.</p>
-            </div>
-            <div className="grid gap-4 sm:grid-cols-3">
-              <div className="rounded-2xl border border-border bg-muted/70 p-4">
-                <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">Total discounts</p>
-                <p className="mt-2 text-2xl font-semibold text-foreground">{discounts.length}</p>
-              </div>
-              <div className="rounded-2xl border border-border bg-muted/70 p-4">
-                <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">Active</p>
-                <p className="mt-2 text-2xl font-semibold text-foreground">{activeCount}</p>
-              </div>
-              <div className="rounded-2xl border border-border bg-muted/70 p-4">
-                <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">Inactive</p>
-                <p className="mt-2 text-2xl font-semibold text-foreground">{inactiveCount}</p>
-              </div>
-            </div>
-          </div>
+        <div className="rounded-2xl border border-border bg-background p-6 shadow-sm">
+  <div className="space-y-3">
+    <div>
+      <h1 className="text-3xl font-bold text-foreground">
+        Admin Discount Panel
+      </h1>
+      <p className="mt-2 text-sm text-muted-foreground">
+        Manage discount assets, activation state, and homepage visibility from one place.
+      </p>
+    </div>
 
-          <div className="flex items-center justify-between rounded-2xl border border-border bg-background p-6 shadow-sm sm:flex-col sm:items-end sm:justify-between">
-            <div className="space-y-2 text-right">
-              <p className="text-sm font-semibold text-foreground">Admin controls</p>
-              <p className="text-sm text-muted-foreground">You can edit discounts or add new items below.</p>
-            </div>
-          </div>
-        </div>
+    <div className="grid gap-4 sm:grid-cols-3">
+      <div className="rounded-2xl border border-border bg-muted/70 p-4">
+        <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">
+          Total discounts
+        </p>
+        <p className="mt-2 text-2xl font-semibold text-foreground">
+          {discounts.length}
+        </p>
+      </div>
 
+      <div className="rounded-2xl border border-border bg-muted/70 p-4">
+        <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">
+          Active
+        </p>
+        <p className="mt-2 text-2xl font-semibold text-foreground">
+          {activeCount}
+        </p>
+      </div>
+
+      <div className="rounded-2xl border border-border bg-muted/70 p-4">
+        <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">
+          Inactive
+        </p>
+        <p className="mt-2 text-2xl font-semibold text-foreground">
+          {inactiveCount}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
         <div className="space-y-6">
           <div className="rounded-2xl border border-border bg-background p-6 shadow-sm">
             <h2 className="text-lg font-semibold text-foreground">{editingDiscount ? "Edit Discount" : "Add Discount"}</h2>

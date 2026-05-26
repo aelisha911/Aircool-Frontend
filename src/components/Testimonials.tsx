@@ -1,4 +1,6 @@
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { fetchAdminReviews } from "@/services/api";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
@@ -7,35 +9,22 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-const testimonials = [
-  {
-    name: "Sarah M.",
-    role: "Homeowner",
-    text: "CoolAirPro installed our new split system in no time. The team was professional, clean, and the price was very competitive. Highly recommend!",
-  },
-  {
-    name: "James L.",
-    role: "Restaurant Owner",
-    text: "They've been maintaining our coolroom for over 3 years now. Reliable, quick to respond, and they always go above and beyond.",
-  },
-  {
-    name: "Priya K.",
-    role: "Office Manager",
-    text: "Our office AC broke down mid-summer and they had it fixed within hours. Excellent service and fair pricing.",
-  },
-  {
-    name: "Michael T.",
-    role: "Property Manager",
-    text: "Outstanding workmanship and communication from start to finish. Highly satisfied with the installation.",
-  },
-  {
-    name: "David R.",
-    role: "Business Owner",
-    text: "Fast response, quality workmanship, and very friendly technicians. I would definitely recommend them.",
-  },
-];
-
 const Testimonials = () => {
+  const { data: testimonials = [], isLoading } = useQuery({
+    queryKey: ["reviews"],
+    queryFn: fetchAdminReviews,
+  });
+
+  if (isLoading) {
+    return (
+      <section className="section-padding">
+        <div className="section-container text-center">
+          Loading reviews...
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="section-padding">
       <div className="section-container">
@@ -96,36 +85,46 @@ const Testimonials = () => {
             }}
             className="pb-12"
           >
-            {testimonials.map((t, index) => (
-              <SwiperSlide key={index}>
-                <div className="bg-card border rounded-xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 h-full min-h-[260px] flex flex-col">
-                  {/* Stars */}
-                  <div className="flex gap-1 mb-4">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        size={16}
-                        className="fill-primary text-primary"
-                      />
-                    ))}
+            {testimonials
+              .filter((item) => !item.isInactive)
+              .map((t) => (
+                <SwiperSlide key={t.id}>
+                 <div className="bg-card border rounded-xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 h-[280px] flex flex-col">
+                    {/* Stars */}
+                    <div className="flex gap-1 mb-4">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <Star
+                          key={star}
+                          size={16}
+                          className={
+                            star <= (t.rating || 0)
+                              ? "fill-primary text-primary"
+                              : "text-muted-foreground"
+                          }
+                        />
+                      ))}
+                    </div>
+
+                    {/* Review Text */}
+    <div className="flex-1 overflow-y-auto pr-2">
+  <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
+    "{t.review || "No review provided"}"
+  </p>
+</div>
+
+                    {/* Customer Info */}
+                    <div>
+                      <p className="font-bold text-foreground">
+                        {t.reviewer || "Anonymous"}
+                      </p>
+
+                      <p className="text-xs text-muted-foreground">
+                        Verified Customer
+                      </p>
+                    </div>
                   </div>
-
-                  {/* Review Text */}
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-grow">
-                    "{t.text}"
-                  </p>
-
-                  {/* Customer Info */}
-                  <div>
-                    <p className="font-bold text-foreground">{t.name}</p>
-
-                    <p className="text-xs text-muted-foreground">
-                      {t.role}
-                    </p>
-                  </div>
-                </div>
-              </SwiperSlide>
-            ))}
+                </SwiperSlide>
+              ))}
           </Swiper>
         </div>
       </div>

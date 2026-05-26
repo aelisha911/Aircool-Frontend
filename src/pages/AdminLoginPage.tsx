@@ -36,51 +36,70 @@ const AdminLoginPage = () => {
   };
 
   return (
-    <main className="min-h-screen bg-muted/20 px-4 py-10">
-      <div className="mx-auto w-full max-w-md rounded-2xl border border-border bg-background p-6 shadow-sm sm:p-8">
-        <h1 className="text-2xl font-bold text-foreground">Admin Login</h1>
-        <p className="mt-2 text-sm text-muted-foreground">Only admin can access this panel.</p>
+    <main className="flex min-h-screen items-center justify-center bg-gradient-to-br from-slate-100 via-blue-50 to-slate-200 px-4 py-10">
+  <div className="w-full max-w-md overflow-hidden rounded-3xl border border-white/20 bg-white/80 backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.12)]">
 
-        <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="admin-email" className="mb-1 block text-sm font-medium text-foreground">
-              Email
-            </label>
-            <input
-              id="admin-email"
-              type="email"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-              className="h-11 w-full rounded-md border border-input bg-background px-3 text-sm outline-none ring-offset-background placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring"
-              placeholder="test@gmail.com"
-              required
-            />
-          </div>
+    {/* Header */}
+    <div className="bg-gradient-to-r from-[#1E4574] via-[#285593] to-[#3569A8] px-8 py-8 text-white">
+      <h1 className="text-3xl font-bold">Admin Login</h1>
+      <p className="mt-2 text-sm text-white/80">
+        Secure access to the Aircool administration panel.
+      </p>
+    </div>
 
-          <div>
-            <label htmlFor="admin-password" className="mb-1 block text-sm font-medium text-foreground">
-              Password
-            </label>
-            <input
-              id="admin-password"
-              type="password"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-              className="h-11 w-full rounded-md border border-input bg-background px-3 text-sm outline-none ring-offset-background placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring"
-              placeholder="Test"
-              required
-            />
-          </div>
+    {/* Form */}
+    <div className="p-8">
+      <form className="space-y-5" onSubmit={handleSubmit}>
 
-          <button
-            type="submit"
-            className="h-11 w-full rounded-md bg-primary px-4 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
+        <div>
+          <label
+            htmlFor="admin-email"
+            className="mb-2 block text-sm font-semibold text-slate-700"
           >
-            Login
-          </button>
-        </form>
-      </div>
-    </main>
+            Email Address
+          </label>
+
+          <input
+            id="admin-email"
+            type="email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            className="h-12 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm shadow-sm outline-none transition focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
+            placeholder="admin@example.com"
+            required
+          />
+        </div>
+
+        <div>
+          <label
+            htmlFor="admin-password"
+            className="mb-2 block text-sm font-semibold text-slate-700"
+          >
+            Password
+          </label>
+
+          <input
+            id="admin-password"
+            type="password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+            className="h-12 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm shadow-sm outline-none transition focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
+            placeholder="Enter password"
+            required
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="h-12 w-full rounded-xl bg-gradient-to-r from-[#1E4574] via-[#285593] to-[#3569A8] text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:opacity-95 hover:-translate-y-0.5 hover:shadow-xl"
+        >
+          Sign In
+        </button>
+
+      </form>
+    </div>
+  </div>
+</main>
   );
 };
 
