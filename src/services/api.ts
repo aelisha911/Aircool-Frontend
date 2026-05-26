@@ -435,20 +435,20 @@ export const deleteAdminDiscount = (id: string) => API.delete(`/api/discounts/${
 
 export const fetchAdminReviews = () =>
   API.get("/api/reviews").then((response) => {
-    console.log("API Response:", response.data);
+    // console.log("API Response:", response.data);
 
     const reviewItems = extractDiscountItems(response.data);
 
     const normalizedItems: AdminReview[] = [];
 
     for (const item of reviewItems) {
-      console.log("Review Item:", item);
+      // console.log("Review Item:", item);
 
       const itemObject = toRecord(item);
 
       const normalized = normalizeAdminReview(itemObject);
 
-      console.log("Normalized:", normalized);
+      // console.log("Normalized:", normalized);
 
       if (normalized) {
         normalizedItems.push(normalized);
