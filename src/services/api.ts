@@ -1,10 +1,10 @@
 import axios from "axios";
 
 export const getApiBaseUrl = () =>
-  import.meta.env.DEV ? "" : import.meta.env.PROD ? import.meta.env.VITE_API_URL : "https://aircool-backend.vercel.app";
+  import.meta.env.VITE_API_URL;
 
 export const getBackendOrigin = () =>
-  import.meta.env.DEV ? "https://aircool-backend.vercel.app" : import.meta.env.VITE_API_URL || "https://aircool-backend.vercel.app";
+  import.meta.env.VITE_API_URL;
 
 const API = axios.create({
   baseURL: getApiBaseUrl(),
