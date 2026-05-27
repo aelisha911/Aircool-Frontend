@@ -63,7 +63,7 @@ const AboutPage = () => {
     <div className="max-w-6xl mx-auto">
 
      {/* Top Section */}
-<div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-10 items-start">
+<div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-10 lg:items-stretch">
 
   {/* Left Side */}
   <div className="space-y-4">
@@ -123,26 +123,22 @@ const AboutPage = () => {
   </div>
 
   {/* Desktop Video Only */}
-<div className="hidden lg:flex justify-center items-start w-full">
-  
-  <div className="w-full max-w-[520px] rounded-2xl overflow-hidden shadow-lg">
-
-    <video
-      src={aboutVideo as string}
-      autoPlay
-      loop
-      muted
-      playsInline
-      className="
-        w-full
-        aspect-video
-        object-contain
-        bg-black
-      "
-    />
+{/* Desktop Video Only */}
+<div className="hidden lg:flex justify-center items-center w-full">
+  <div className="w-full max-w-[520px]">
+    
+    <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-lg">
+      <video
+        src={aboutVideo as string}
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+    </div>
 
   </div>
-
 </div>
 
 </div>
