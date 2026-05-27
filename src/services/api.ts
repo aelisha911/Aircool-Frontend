@@ -1,10 +1,14 @@
 import axios from "axios";
 
 export const getApiBaseUrl = () =>
-  import.meta.env.VITE_API_URL || "http://localhost:5000";
+  import.meta.env.DEV
+    ? import.meta.env.VITE_API_URL_LOCALHOST 
+    : import.meta.env.VITE_API_URL;
 
 export const getBackendOrigin = () =>
-  import.meta.env.VITE_API_URL || "http://localhost:5000";
+  import.meta.env.DEV
+    ? import.meta.env.VITE_API_URL_LOCALHOST 
+    : import.meta.env.VITE_API_URL;
 
 const API = axios.create({
   baseURL: getApiBaseUrl(),

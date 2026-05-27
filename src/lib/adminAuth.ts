@@ -12,7 +12,12 @@ type AdminLoginResponse = {
 
 export const adminLogin = async (email: string, password: string) => {
   try {
-    const baseUrl = import.meta.env.DEV ? "" : import.meta.env.VITE_API_URL || "http://localhost:5000";
+    
+    const baseUrl =
+  import.meta.env.DEV
+    ? import.meta.env.VITE_API_URL_LOCALHOST 
+    : import.meta.env.VITE_API_URL ;
+    
     const response = await fetch(
       `${baseUrl}${ADMIN_LOGIN_PATH}`,
       {
