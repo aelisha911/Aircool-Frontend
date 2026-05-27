@@ -107,7 +107,7 @@ const ContactPage = () => {
                   <h3 className="font-heading font-bold text-foreground mb-4">Contact Info</h3>
                   <ul className="space-y-4">
                     {[
-                      { icon: MapPin, text: "Eversley Ave, Enfield SA 5085" },
+                      { icon: MapPin, text: "1/3 Eversley Ave, Enfield SA 5085" },
                       { icon: Phone, text: "0490 089 857" },
                       { icon: Mail, text: "aircooldynamics@gmail.com" },
                       { icon: Clock, text: "Mon-Fri: 7am–6pm, Sat-Sun: 9am–3pm" },
@@ -128,7 +128,7 @@ const ContactPage = () => {
   <div className="aspect-[4/3]">
     <iframe
       title="Google Map"
-      src="https://www.google.com/maps?q=Eversley+Ave,+Enfield+SA+5085,+Australia&output=embed"
+      src="https://www.google.com/maps?q=1/3+Eversley+Ave,+Enfield+SA+5085,+Australia&output=embed"
       width="100%"
       height="100%"
       style={{ border: 0 }}
