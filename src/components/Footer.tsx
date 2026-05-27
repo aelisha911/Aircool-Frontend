@@ -26,6 +26,7 @@ const Footer = () => {
                 { label: "Services", path: "/services" },
                 { label: "About Us", path: "/about" },
                 { label: "Contact", path: "/contact" },
+                { label: "Admin", path: "/admin" },
               ].map((link) => (
                 <li key={link.path}>
                   <Link to={link.path} className="text-sm text-background/75 hover:text-sky-200 transition-all duration-200 hover:translate-x-0.5 inline-block">
