@@ -6,25 +6,20 @@ type DiscountImageSectionProps = {
 
 const DiscountImageSection = ({ imageUrl, imageAlt, videoUrl }: DiscountImageSectionProps) => {
   return (
-    <section className="section-padding pt-8 ">
+    <section className="section-padding pt-6 ">
       <div className="section-container">
-        <div className="overflow-hidden">
+       <div className="flex justify-center  rounded-2xl">
           {videoUrl ? (
-            <div className="w-full overflow-hidden rounded-md border border-border bg-black/5">
-              <video
-                controls
-                src={videoUrl}
-                className="h-[320px] w-full object-contain sm:h-[420px] md:h-[520px] lg:h-[620px]"
-                aria-label={imageAlt ?? "Discount video"}
-              />
-            </div>
+           <div className="flex justify-center bg-[#e9eef5] rounded-2xl">
+  <video
+    controls
+    src={videoUrl}
+    className="w-full max-w-4xl h-[220px] sm:h-[320px] md:h-[420px] lg:h-[500px] object-contain rounded-2xl shadow-2xl"
+    aria-label={imageAlt ?? "Discount video"}
+  />
+</div>
           ) : imageUrl ? (
-            <img
-              src={imageUrl}
-              alt={imageAlt ?? "Discount offer"}
-              className="h-[320px] w-full object-contain sm:h-[420px] md:h-[520px] lg:h-[620px]"
-              loading="lazy"
-            />
+            <div className="flex justify-center bg-[#e9eef5] rounded-2xl "> <img src={imageUrl} alt={imageAlt ?? "Discount offer"} className="w-full max-w-4xl h-[220px] sm:h-[320px] md:h-[420px] lg:h-[500px] object-contain rounded-2xl shadow-2xl" loading="lazy" /> </div>
           ) : null}
         </div>
       </div>

@@ -126,6 +126,18 @@ const Testimonials = () => {
                 </SwiperSlide>
               ))}
           </Swiper>
+
+
+          <div className="flex justify-center mt-8">
+<a
+  href="https://www.google.co.in/maps/place/Air+Cool+Dynamics/@-34.8704167,138.5991193,17z/data=!4m8!3m7!1s0x6814a8b57ea8bc7:0x4a53e4adfa355e21!8m2!3d-34.8704167!4d138.6016942!9m1!1b1!16s%2Fg%2F11w_n8f5rw?entry=ttu&g_ep=EgoyMDI2MDUyNS4wIKXMDSoASAFQAw%3D%3D"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-flex items-center gap-2 bg-primary text-white font-semibold px-6 py-3 rounded-xl shadow-lg transition-all duration-300 hover:scale-105 hover:bg-accent hover:text-primary"
+>
+  ⭐ Read More Reviews
+</a>
+</div>
         </div>
       </div>
     </section>

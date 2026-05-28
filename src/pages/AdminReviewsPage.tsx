@@ -241,7 +241,7 @@ const AdminReviewsPage = () => {
                   value={reviewer}
                   onChange={(event) => setReviewer(event.target.value)}
                   className="h-11 w-full rounded-md border border-input bg-background px-3 text-sm outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring"
-                  placeholder="John Doe"
+                  placeholder="enter reviewer name..."
                   required
                 />
               </div>
@@ -256,7 +256,7 @@ const AdminReviewsPage = () => {
                   value={review}
                   onChange={(event) => setReview(event.target.value)}
                   className="w-full rounded-md border border-input bg-background px-3 py-3 text-sm outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring"
-                  placeholder="Enter the customer review here"
+                  placeholder="Enter the customer review here..."
                   
                 />
               </div>
@@ -274,7 +274,7 @@ const AdminReviewsPage = () => {
                   value={rating}
                   onChange={(event) => setRating(event.target.value)}
                   className="h-11 w-40 rounded-md border border-input bg-background px-3 text-sm outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring"
-                  placeholder="5"
+                  placeholder="1-5"
                   
                 />
               </div>

@@ -65,7 +65,7 @@ const AdminLoginPage = () => {
             value={email}
             onChange={(event) => setEmail(event.target.value)}
             className="h-12 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm shadow-sm outline-none transition focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
-            placeholder="admin@example.com"
+            placeholder="enter your login email..."
             required
           />
         </div>

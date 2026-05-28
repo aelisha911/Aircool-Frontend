@@ -39,6 +39,44 @@ const Index = () => {
             </div>
           </div>
         </section>
+  {activeDiscounts.length > 0 && (
+  <section className="py-6">
+    
+    <div className="section-container flex justify-center">
+      
+      <div className="w-full max-w-3xl mx-auto">
+        
+        <div className="relative flex items-center justify-center gap-3 px-6 md:px-10 py-4 rounded-2xl bg-gradient-to-r from-red-600 via-red-500 to-orange-500 shadow-[0_10px_30px_rgba(239,68,68,0.35)] border border-white/10 overflow-hidden">
+
+          {/* Glow Effect */}
+          <div className="absolute inset-0 bg-white/10 backdrop-blur-sm" />
+
+          {/* Content */}
+          <div className="relative flex items-center gap-3">
+            
+            <span className="text-2xl animate-bounce">🔥</span>
+
+            <div className="text-center">
+              <h3 className="text-white font-extrabold text-base md:text-xl tracking-wide">
+                Limited Time Discount Offers
+              </h3>
+
+              <p className="text-white/90 text-xs md:text-sm">
+                Save big on HVAC installation & repair services
+              </p>
+            </div>
+
+            <span className="text-2xl animate-bounce">⚡</span>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+)}
 
         {activeDiscounts.map((discount, index) => (
           <DiscountImageSection
