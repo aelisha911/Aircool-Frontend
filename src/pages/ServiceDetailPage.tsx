@@ -88,7 +88,7 @@ const ServiceDetailPage = () => {
                     <Button className="w-full" size="lg">Get a Quote</Button>
                   </Link>
                   <a href="tel:+1234567890" className="block mt-3">
-                    <Button variant="outline" className="w-full" size="lg">Call (123) 456-7890</Button>
+                    <Button variant="outline" className="w-full" size="lg">Call 0490 089 857</Button>
                   </a>
                 </div>
               </div>
