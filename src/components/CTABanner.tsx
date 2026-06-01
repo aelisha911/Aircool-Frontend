@@ -18,7 +18,7 @@ const CTABanner = () => {
               Get a Free Quote <ArrowRight size={18} className="ml-1" />
             </Button>
           </Link>
-          <a href="tel:+1234567890">
+          <a href="tel:0490 089 857">
             <Button size="lg" variant="outline" className="text-base px-7 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground bg-transparent">
               <Phone size={18} className="mr-1.5" /> Call Now
             </Button>
