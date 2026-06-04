@@ -51,7 +51,7 @@ const Navbar = () => {
 
         {/* Mobile actions */}
         <div className="md:hidden flex items-center gap-2">
-          <a href="tel:+1234567890" className="p-2 rounded-lg hover:bg-secondary transition-colors text-primary" aria-label="Call us">
+          <a href="tel:0490 089 857" className="p-2 rounded-lg hover:bg-secondary transition-colors text-primary" aria-label="Call us">
             <Phone size={20} />
           </a>
           <button
