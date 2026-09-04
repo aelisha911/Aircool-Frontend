@@ -40,9 +40,9 @@ const Navbar = () => {
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
-          <a href="tel:+61490089857" className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+          <a href="tel:1300019568" className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
             <Phone size={16} />
-            0490 089 857
+            0490 089 857 / 1300 019 568
           </a>
           <Link to="/contact">
             <Button>Get a Quote</Button>
@@ -51,7 +51,7 @@ const Navbar = () => {
 
         {/* Mobile actions */}
         <div className="md:hidden flex items-center gap-2">
-          <a href="tel:0490 089 857" className="p-2 rounded-lg hover:bg-secondary transition-colors text-primary" aria-label="Call us">
+          <a href="tel:1300019568" className="p-2 rounded-lg hover:bg-secondary transition-colors text-primary" aria-label="Call us">
             <Phone size={20} />
           </a>
           <button
