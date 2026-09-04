@@ -5,6 +5,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import GoogleTag from "./components/GoogleTag";
 import ScrollToTop from "./components/ScrollToTop";
 import AdminRoute from "./components/AdminRoute";
 import AdminPanelLayout from "./components/AdminPanelLayout";
@@ -23,6 +24,7 @@ const BlogsPage = lazy(() => import("./pages/BlogsPage"));
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
+      <GoogleTag />
       <Toaster />
       <Sonner />
       <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
