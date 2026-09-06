@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Smartphone, Mail, Clock } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -108,7 +108,8 @@ const ContactPage = () => {
                   <ul className="space-y-4">
                     {[
                       { icon: MapPin, text: "1/3 Eversley Ave, Enfield SA 5085" },
-                      { icon: Phone, text: "0490 089 857 / 1300 019 568" },
+                      { icon: Smartphone, text: "1300 019 568" },
+                      { icon: Phone, text: "0490 089 857" },
                       { icon: Mail, text: "aircooldynamics@gmail.com" },
                       { icon: Clock, text: "Mon-Fri: 7am–6pm, Sat-Sun: 9am–3pm" },
                     

@@ -42,7 +42,7 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-3">
           <a href="tel:1300019568" className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
             <Phone size={16} />
-            0490 089 857 / 1300 019 568
+            1300 019 568
           </a>
           <Link to="/contact">
             <Button>Get a Quote</Button>
