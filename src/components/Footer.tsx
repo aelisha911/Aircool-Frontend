@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import logo from "../assets/AirCool-LOGO-removebg.png";
+import Accreditations from "./Accreditations";
 
 const Footer = () => {
   return (
@@ -15,6 +16,8 @@ const Footer = () => {
             <p className="text-sm text-background/80 leading-relaxed">
               Your trusted partner for all HVAC and cooling needs. Professional service, reliable results.
             </p>
+
+            <Accreditations />
           </div>
 
           {/* Quick Links */}
