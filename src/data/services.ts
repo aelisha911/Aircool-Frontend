@@ -115,11 +115,13 @@ export const services: Service[] = [
     title: "Evaporative Cooler",
     shortDescription: "Eco-friendly evaporative cooling solutions that use natural processes to cool your space efficiently.",
     fullDescription: [
-      "Our central ducted air conditioning solutions provide powerful, energy-efficient cooling for homes, businesses, and industrial spaces. We specialise in the installation, servicing, and repairs of ducted systems designed to deliver consistent, even airflow throughout your entire property.",
+      "Evaporative coolers are a natural, energy-efficient way to cool your home, using the power of water and fresh air. We specialise in the installation, servicing, and repairs of evaporative cooling systems, helping you stay comfortable all summer long.",
 
-      "Our qualified technicians ensure your system runs efficiently, quietly, and reliably, helping you stay comfortable while keeping energy usage under control. We use quality components and provide professional maintenance to maximise performance and system lifespan."
+      "Unlike traditional air conditioning, evaporative coolers draw in warm air, pass it through water-saturated pads, and release cool, fresh air into your home. This process not only lowers the temperature but also adds moisture to the air, creating a healthier and more comfortable environment — especially in Adelaide’s dry climate.",
+
+      "Our qualified technicians ensure your evaporative cooler runs efficiently and reliably, providing expert advice, professional maintenance and fast, effective repairs."
     ],
-    benefits: ["Up to 80% lower energy use compared to refrigerated air conditioning", "Eco-friendly cooling designed for Adelaide’s dry conditions", "Continuous flow of fresh, filtered air", "Low running and maintenance costs", "Ideal for Adelaide’s hot, dry summers"],
+    benefits: ["Uses natural, renewable cooling with low energy consumption", " Cost-effective to run and maintain", "Provides fresh, clean, cool air", "Improves indoor air quality and adds moisture", "Ideal for Adelaide’s hot, dry summers"],
     image: serviceEvaporative,
     icon: "Wind",
   },

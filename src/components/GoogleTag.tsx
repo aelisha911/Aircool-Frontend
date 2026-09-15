@@ -35,6 +35,9 @@ const GoogleTag = () => {
 			function gtag(){dataLayer.push(arguments);}
 			gtag('js', new Date());
 			gtag('config', '${GOOGLE_TAG_ID}');
+			gtag('config', 'AW-18231129479/OqGvCO7w-uwcEIfro_VD', {
+				'phone_conversion_number': '1300 019 568'
+			});
 		`;
 		document.head.appendChild(inlineScript);
 	}, []);
