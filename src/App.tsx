@@ -18,6 +18,7 @@ import NotFound from "./pages/NotFound";
 import AdminLoginPage from "./pages/AdminLoginPage";
 import AdminDiscountsPage from "./pages/AdminDiscountsPage";
 import AdminReviewsPage from "./pages/AdminReviewsPage";
+import AdminHomepagePage from "./pages/AdminHomepagePage";
 
 const queryClient = new QueryClient();
 const BlogsPage = lazy(() => import("./pages/BlogsPage"));
@@ -44,7 +45,8 @@ const App = () => (
               </AdminRoute>
             }
           >
-            <Route index element={<Navigate to="discounts" replace />} />
+            <Route index element={<Navigate to="homepage" replace />} />
+            <Route path="homepage" element={<AdminHomepagePage />} />
             <Route path="discounts" element={<AdminDiscountsPage />} />
             <Route path="reviews" element={<AdminReviewsPage />} />
           </Route>

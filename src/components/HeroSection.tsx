@@ -2,12 +2,14 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Shield } from "lucide-react";
 import heroImage from "@/assets/hero-hvac.jpg";
-const HeroSection = () => {
+import type { HomepageSection } from "@/data/homepage";
+
+const HeroSection = ({ content }: { content?: HomepageSection }) => {
   return (
     <section className="relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0">
-        <img src={heroImage} alt="HVAC professional at work" className="w-full h-full object-cover" width={1920} height={1080} />
+        <img src={content?.imageUrl ?? heroImage} alt={content?.title ?? "HVAC professional at work"} className="w-full h-full object-cover" width={1920} height={1080} />
         <div className="absolute inset-0 bg-foreground/70" />
       </div>
 
@@ -15,21 +17,21 @@ const HeroSection = () => {
         <div className="max-w-2xl">
           <div className="inline-flex items-center gap-2 bg-primary/20 backdrop-blur-sm border border-primary/30 rounded-full px-4 py-1.5 mb-6 animate-fade-in">
             <Shield size={14} className="text-primary" />
-            <span className="text-xs font-medium text-primary-foreground/90">Licensed & Insured Professionals</span>
+            <span className="text-xs font-medium text-primary-foreground/90">{content?.eyebrow ?? "Licensed & Insured Professionals"}</span>
           </div>
 
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] mb-6 text-primary-foreground animate-fade-in-up">
-            Reliable HVAC & Cooling Solutions for Your Comfort
+            {content?.title ?? "Reliable HVAC & Cooling Solutions for Your Comfort"}
           </h1>
 
           <p className="text-lg md:text-xl leading-relaxed mb-8 text-primary-foreground/80 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
-           Expert heating, cooling, and refrigeration services across Adelaide. We deliver reliable, energy-efficient solutions for both homes and businesses, Available 7 days a week for your convenience.
+           {content?.body ?? "Expert heating, cooling, and refrigeration services across Adelaide. We deliver reliable, energy-efficient solutions for both homes and businesses, Available 7 days a week for your convenience."}
           </p>
 
           <div className="flex flex-wrap gap-3 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-            <Link to="/contact">
+            <Link to={content?.buttonUrl ?? "/contact"}>
               <Button size="lg" className="text-base px-7">
-                Get a Quote <ArrowRight size={18} className="ml-1" />
+                {content?.buttonText ?? "Get a Quote"} <ArrowRight size={18} className="ml-1" />
               </Button>
             </Link>
           </div>

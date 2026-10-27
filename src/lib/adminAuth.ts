@@ -67,4 +67,5 @@ export const isAdminAuthenticated = () => localStorage.getItem(ADMIN_SESSION_KEY
 
 export const adminLogout = () => {
   localStorage.removeItem(ADMIN_SESSION_KEY);
+  localStorage.removeItem("aircool_admin_token");
 };

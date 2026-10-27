@@ -8,8 +8,9 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import type { HomepageSection } from "@/data/homepage";
 
-const Testimonials = () => {
+const Testimonials = ({ content }: { content?: HomepageSection }) => {
   const { data: testimonials = [], isLoading } = useQuery({
     queryKey: ["reviews"],
     queryFn: fetchAdminReviews,
@@ -31,11 +32,11 @@ const Testimonials = () => {
         {/* Heading */}
         <div className="text-center max-w-2xl mx-auto mb-12">
           <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-2">
-            Testimonials
+            {content?.eyebrow ?? "Testimonials"}
           </p>
 
           <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">
-            What Our Customers Say
+            {content?.title ?? "What Our Customers Say"}
           </h2>
         </div>
 

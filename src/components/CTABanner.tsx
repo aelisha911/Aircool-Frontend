@@ -1,21 +1,22 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Phone } from "lucide-react";
+import type { HomepageSection } from "@/data/homepage";
 
-const CTABanner = () => {
+const CTABanner = ({ content }: { content?: HomepageSection }) => {
   return (
     <section className="gradient-primary">
       <div className="section-container py-14 md:py-20 text-center">
         <h2 className="text-3xl md:text-4xl font-extrabold text-primary-foreground mb-4">
-          Ready to Get Started?
+          {content?.title ?? "Ready to Get Started?"}
         </h2>
         <p className="text-lg text-primary-foreground/80 max-w-xl mx-auto mb-8">
-          Contact us today for a free consultation and quote. Our experts are ready to help with all your HVAC needs.
+          {content?.body ?? "Contact us today for a free consultation and quote. Our experts are ready to help with all your HVAC needs."}
         </p>
         <div className="flex flex-wrap justify-center gap-3">
-          <Link to="/contact">
+          <Link to={content?.buttonUrl ?? "/contact"}>
             <Button size="lg" variant="secondary" className="text-base px-7">
-              Get a Free Quote <ArrowRight size={18} className="ml-1" />
+              {content?.buttonText ?? "Get a Free Quote"} <ArrowRight size={18} className="ml-1" />
             </Button>
           </Link>
           <a href="tel:1300019568">

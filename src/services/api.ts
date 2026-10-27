@@ -1,4 +1,5 @@
 import axios from "axios";
+import { defaultHomepageSections, type HomepageSection } from "@/data/homepage";
 
 export const getApiBaseUrl = () =>
   import.meta.env.DEV
@@ -13,6 +14,17 @@ export const getBackendOrigin = () =>
 const API = axios.create({
   baseURL: getApiBaseUrl(),
 });
+
+const getAdminAuthHeaders = () => {
+  const token = localStorage.getItem("aircool_admin_token");
+  if (!token) {
+    throw new Error("Authentication required. Please sign in again.");
+  }
+
+  return {
+    Authorization: `Bearer ${token}`,
+  };
+};
 
 export type ContactFormPayload = {
   name: string;
@@ -47,6 +59,50 @@ export type AdminReview = {
   rating?: number;
   isInactive?: boolean;
   isActive?: boolean;
+};
+
+const normalizeHomepageSection = (value: unknown, index: number): HomepageSection | null => {
+  const source = toRecord(value);
+  if (!source) return null;
+  const type = pickStringField(source, ["type", "sectionType"]) as HomepageSection["type"] | undefined;
+  if (!type) return null;
+  const items = Array.isArray(source.items)
+    ? source.items.map((item) => {
+        const itemObject = toRecord(item);
+        return itemObject
+          ? {
+              title: pickStringField(itemObject, ["title", "name"]) ?? "",
+              description: pickStringField(itemObject, ["description", "body", "text"]) ?? "",
+              icon: pickStringField(itemObject, ["icon"]),
+            }
+          : null;
+      }).filter((item): item is NonNullable<typeof item> => Boolean(item))
+    : undefined;
+  return {
+    id: pickStringField(source, ["id", "key"]) ?? `${type}-${index}`,
+    type,
+    title: pickStringField(source, ["title", "heading"]) ?? "",
+    eyebrow: pickStringField(source, ["eyebrow", "label"]),
+    body: pickStringField(source, ["body", "description", "text"]),
+    buttonText: pickStringField(source, ["buttonText", "ctaText"]),
+    buttonUrl: pickStringField(source, ["buttonUrl", "ctaUrl", "url"]),
+    imageUrl: toAbsoluteUrl(pickStringField(source, ["imageUrl", "image", "imagePath"])),
+    enabled: parseBoolean(source.enabled ?? source.isActive) ?? true,
+    background: pickStringField(source, ["background", "backgroundClass"]),
+    items,
+  };
+};
+
+const extractHomepageSections = (payload: unknown) => {
+  const object = toRecord(payload);
+  const raw = Array.isArray(payload)
+    ? payload
+    : object && Array.isArray(object.sections)
+      ? object.sections
+      : object && Array.isArray(object.data)
+        ? object.data
+        : [];
+  return raw.map(normalizeHomepageSection).filter((item): item is HomepageSection => Boolean(item));
 };
 
 const toAbsoluteUrl = (value?: string) => {
@@ -510,5 +566,33 @@ export const updateAdminReview = (payload: {
 };
 
 export const deleteAdminReview = (id: string) => API.delete(`/api/reviews/${id}`);
+
+export const fetchHomepageSections = async (): Promise<HomepageSection[]> => {
+  try {
+    const response = await API.get<unknown>("/api/homepage");
+    const sections = extractHomepageSections(response.data);
+    return sections.length > 0 ? sections : defaultHomepageSections;
+  } catch (error) {
+    if (axios.isAxiosError(error) && error.response?.status === 404) {
+      return defaultHomepageSections;
+    }
+    throw error;
+  }
+};
+
+export const saveHomepageSections = async (sections: HomepageSection[]): Promise<HomepageSection[]> => {
+  const response = await API.put<unknown>(
+    "/api/homepage",
+    { sections },
+    { headers: getAdminAuthHeaders() },
+  );
+  const persistedSections = extractHomepageSections(response.data);
+
+  if (persistedSections.length === 0 && sections.length > 0) {
+    throw new Error("Homepage save returned no sections.");
+  }
+
+  return persistedSections;
+};
 
 export default API;

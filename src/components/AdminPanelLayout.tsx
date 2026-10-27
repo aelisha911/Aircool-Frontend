@@ -27,7 +27,7 @@ const AdminPanelLayout = () => {
         </h1>
 
         <p className="mt-2 text-sm opacity-90">
-          Manage discounts and reviews content.
+          Manage all website content.
         </p>
       </div>
 
@@ -38,6 +38,16 @@ const AdminPanelLayout = () => {
         </p>
 
      <nav className="space-y-2">
+  <NavLink
+  to="/admin/homepage"
+  className={({ isActive }) =>
+    `flex items-center rounded-2xl px-4 py-3 text-sm font-medium transition-all duration-300 ${
+      isActive ? "bg-primary text-white shadow-lg hover:text-white" : "text-gray-800 hover:bg-gray-100"
+    }`
+  }
+>
+  Homepage
+</NavLink>
   <NavLink
   to="/admin/discounts"
   className={({ isActive }) =>
