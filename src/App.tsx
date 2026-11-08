@@ -19,6 +19,9 @@ import AdminLoginPage from "./pages/AdminLoginPage";
 import AdminDiscountsPage from "./pages/AdminDiscountsPage";
 import AdminReviewsPage from "./pages/AdminReviewsPage";
 import AdminHomepagePage from "./pages/AdminHomepagePage";
+import DuctedAirConditioning from "./components/DuctedAirConditioning";
+import DuctedGasHeating from "./components/DuctedGasHeating";
+import EvaporateAirConditioning from "./components/EvaporateAirConditioning";
 
 const queryClient = new QueryClient();
 const BlogsPage = lazy(() => import("./pages/BlogsPage"));
@@ -31,7 +34,11 @@ const App = () => (
       <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
         <ScrollToTop />
         <Routes>
+          
           <Route path="/" element={<Index />} />
+          <Route path="/services/central-ducted-air-conditioning" element={<DuctedAirConditioning />} />
+          <Route path="/services/ducted-gas-heating-adelaide" element={<DuctedGasHeating />} />
+          <Route path="/services/evaporative-air-conditioning" element={<EvaporateAirConditioning />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/services/:slug" element={<ServiceDetailPage />} />
           <Route path="/about" element={<AboutPage />} />
