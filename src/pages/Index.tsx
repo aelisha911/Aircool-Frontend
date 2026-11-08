@@ -11,7 +11,7 @@ const Index = () => {
         {/* <HomepageRenderer /> */}
         <HomepageTwo />
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
