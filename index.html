@@ -7,6 +7,218 @@
     <meta name="description" content="Professional HVAC and cooling services for residential and commercial customers. Heating, cooling, installation, maintenance, and repair." />
     <meta name="author" content="AirCoolDynamics" />
 
+    <script>
+(function () {
+    // Run only on homepage
+    if (window.location.pathname === "/") {
+      console.log("Homepage SEO is running.");
+        // Homepage SEO Metadata
+        document.title = "Air Conditioning Service & Repairs Adelaide | Air Cool Dynamics";
+
+        const metaTags = [
+            { name: "robots", content: "index, follow, max-image-preview:large" },
+            { name: "geo.region", content: "AU-SA" },
+            { name: "geo.placename", content: "Enfield, Adelaide" },
+            { name: "geo.position", content: "-34.8704167;138.6016942" },
+            { name: "ICBM", content: "-34.8704167, 138.6016942" },
+            { name: "theme-color", content: "#1f4d84" },
+
+            { property: "og:type", content: "website" },
+            { property: "og:locale", content: "en_AU" },
+            { property: "og:site_name", content: "Air Cool Dynamics" },
+            { property: "og:url", content: "https://aircooldynamics.com.au/" },
+            { property: "og:title", content: "Air Conditioning Service & Repairs Adelaide | Air Cool Dynamics" },
+            { property: "og:description", content: "Aircon service, repairs and installation across all of Adelaide and surrounding suburbs. Ducted, split system, evaporative and commercial refrigeration. Open 7 days. 1300 019 568." },
+            { property: "og:image", content: "https://aircooldynamics.com.au/assets/hero-hvac-BsfPQ8Hk.jpg" },
+            { property: "og:image:alt", content: "Air conditioned living room in an Adelaide home" },
+
+            { name: "twitter:card", content: "summary_large_image" },
+            { name: "twitter:title", content: "Air Conditioning Service & Repairs Adelaide | Air Cool Dynamics" },
+            { name: "twitter:description", content: "Aircon service, repairs and installation across all of Adelaide. Open 7 days. Call 1300 019 568." },
+            { name: "twitter:image", content: "https://aircooldynamics.com.au/assets/hero-hvac-BsfPQ8Hk.jpg" }
+        ];
+
+        metaTags.forEach(tag => {
+            const selector = tag.name
+                ? `meta[name="${tag.name}"]`
+                : `meta[property="${tag.property}"]`;
+
+            let element = document.querySelector(selector);
+
+            if (!element) {
+                element = document.createElement("meta");
+                document.head.appendChild(element);
+            }
+
+            if (tag.name) {
+                element.setAttribute("name", tag.name);
+            } else {
+                element.setAttribute("property", tag.property);
+            }
+
+            element.setAttribute("content", tag.content);
+        });
+
+        // Canonical URL
+        let canonical = document.querySelector('link[rel="canonical"]');
+
+        if (!canonical) {
+            canonical = document.createElement("link");
+            canonical.rel = "canonical";
+            document.head.appendChild(canonical);
+        }
+
+        canonical.href = "https://aircooldynamics.com.au/";
+
+        // Google Fonts
+        const fontLink = document.createElement("link");
+        fontLink.rel = "stylesheet";
+        fontLink.href = "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap";
+        document.head.appendChild(fontLink);
+
+        // Google Analytics
+        const analytics = document.createElement("script");
+        analytics.async = true;
+        analytics.src = "https://www.googletagmanager.com/gtag/js?id=G-EKNT9RXDEE";
+        document.head.appendChild(analytics);
+
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () {
+            dataLayer.push(arguments);
+        };
+
+        gtag("js", new Date());
+        gtag("config", "G-EKNT9RXDEE");
+
+        // Homepage JSON-LD Schema
+        const schema = document.createElement("script");
+        schema.type = "application/ld+json";
+
+        schema.textContent = JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+      "@type": "HVACBusiness",
+      "@id": "https://aircooldynamics.com.au/#business",
+      "name": "Air Cool Dynamics",
+      "alternateName": ["AirCool Dynamics", "AirCoolDynamics"],
+      "description": "Adelaide air conditioning business based in Enfield, SA. Air conditioning service, repairs and installation for ducted, split system and evaporative systems, plus commercial refrigeration and coolrooms, for homes and businesses across all of Adelaide and the surrounding suburbs.",
+      "url": "https://aircooldynamics.com.au/",
+      "logo": "https://aircooldynamics.com.au/assets/AirCool-LOGO-removebg-CG6qwkcA.png",
+      "image": "https://aircooldynamics.com.au/assets/hero-hvac-BsfPQ8Hk.jpg",
+      "telephone": "+61 1300 019 568",
+      "email": "aircooldynamics@gmail.com",
+      "taxID": "98460798152",
+      "priceRange": "Free quotes",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1/3 Eversley Ave",
+        "addressLocality": "Enfield",
+        "addressRegion": "SA",
+        "postalCode": "5085",
+        "addressCountry": "AU"
+      },
+      "geo": { "@type": "GeoCoordinates", "latitude": -34.8704167, "longitude": 138.6016942 },
+      "hasMap": "https://maps.google.com/?cid=5355875817751928353",
+      "sameAs": ["https://maps.google.com/?cid=5355875817751928353"],
+      "contactPoint": [
+        { "@type": "ContactPoint", "telephone": "+61 1300 019 568", "contactType": "customer service", "areaServed": "AU-SA", "availableLanguage": "en" },
+        { "@type": "ContactPoint", "telephone": "+61 490 089 857", "contactType": "customer service", "areaServed": "AU-SA", "availableLanguage": "en" }
+      ],
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "07:00", "closes": "18:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "09:00", "closes": "15:00" }
+      ],
+      "areaServed": [
+        { "@type": "City", "name": "Adelaide" },
+        { "@type": "AdministrativeArea", "name": "Greater Adelaide, South Australia" },
+        { "@type": "GeoCircle", "geoMidpoint": { "@type": "GeoCoordinates", "latitude": -34.8704167, "longitude": 138.6016942 }, "geoRadius": "60000" },
+        { "@type": "Place", "name": "Adelaide CBD SA" }, { "@type": "Place", "name": "Enfield SA" },
+        { "@type": "Place", "name": "Prospect SA" }, { "@type": "Place", "name": "Klemzig SA" },
+        { "@type": "Place", "name": "Walkerville SA" }, { "@type": "Place", "name": "Northfield SA" },
+        { "@type": "Place", "name": "Salisbury SA" }, { "@type": "Place", "name": "Mawson Lakes SA" },
+        { "@type": "Place", "name": "Ingle Farm SA" }, { "@type": "Place", "name": "Pooraka SA" },
+        { "@type": "Place", "name": "Elizabeth SA" }, { "@type": "Place", "name": "Gawler SA" },
+        { "@type": "Place", "name": "Modbury SA" }, { "@type": "Place", "name": "Golden Grove SA" },
+        { "@type": "Place", "name": "Tea Tree Gully SA" }, { "@type": "Place", "name": "Campbelltown SA" },
+        { "@type": "Place", "name": "Norwood SA" }, { "@type": "Place", "name": "Unley SA" },
+        { "@type": "Place", "name": "Mitcham SA" }, { "@type": "Place", "name": "Woodville SA" },
+        { "@type": "Place", "name": "Port Adelaide SA" }, { "@type": "Place", "name": "Findon SA" },
+        { "@type": "Place", "name": "West Lakes Shore SA" }, { "@type": "Place", "name": "Semaphore Park SA" },
+        { "@type": "Place", "name": "Kidman Park SA" }, { "@type": "Place", "name": "Underdale SA" },
+        { "@type": "Place", "name": "Glenelg SA" }, { "@type": "Place", "name": "Marion SA" },
+        { "@type": "Place", "name": "Morphett Vale SA" }, { "@type": "Place", "name": "Noarlunga SA" },
+        { "@type": "Place", "name": "Aberfoyle Park SA" }, { "@type": "Place", "name": "Stirling SA" },
+        { "@type": "Place", "name": "Mount Barker SA" }
+      ],
+      "hasCredential": [
+        { "@type": "EducationalOccupationalCredential", "credentialCategory": "Refrigerant Trading Authorisation", "identifier": "AU069541", "recognizedBy": { "@type": "Organization", "name": "Australian Refrigeration Council (ARC)" } },
+        { "@type": "EducationalOccupationalCredential", "credentialCategory": "South Australian building work licence", "identifier": "BLD353665" }
+      ],
+      "knowsAbout": ["Air conditioning service", "Air conditioning repairs", "Ducted reverse cycle air conditioning", "Split system air conditioning", "Evaporative air conditioning", "Commercial refrigeration", "Coolroom repairs", "Air conditioning installation"],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Air conditioning and refrigeration services in Adelaide",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Air conditioning service and maintenance", "url": "https://aircooldynamics.com.au/services/service-maintenance" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Air conditioning repairs" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Ducted air conditioning", "url": "https://aircooldynamics.com.au/services/central-ducted-air-conditioning" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Split system air conditioning", "url": "https://aircooldynamics.com.au/services/split-type-air-conditioning-unit" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Evaporative air conditioning", "url": "https://aircooldynamics.com.au/services/evaporative-cooler" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Air conditioning installation and replacement", "url": "https://aircooldynamics.com.au/services/installation-services" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Commercial refrigeration and coolroom repairs", "url": "https://aircooldynamics.com.au/services/fridge-coolroom" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Reverse cycle heating and cooling", "url": "https://aircooldynamics.com.au/services/heating-cooling" } }
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://aircooldynamics.com.au/#website",
+      "url": "https://aircooldynamics.com.au/",
+      "name": "Air Cool Dynamics",
+      "inLanguage": "en-AU",
+      "publisher": { "@id": "https://aircooldynamics.com.au/#business" }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://aircooldynamics.com.au/#webpage",
+      "url": "https://aircooldynamics.com.au/",
+      "name": "Air Conditioning Service & Repairs Adelaide | Air Cool Dynamics",
+      "isPartOf": { "@id": "https://aircooldynamics.com.au/#website" },
+      "about": { "@id": "https://aircooldynamics.com.au/#business" },
+      "inLanguage": "en-AU",
+      "datePublished": "2026-10-29",
+      "dateModified": "2026-10-29"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://aircooldynamics.com.au/#faq",
+      "mainEntity": [
+        {"@type": "Question", "name": "How often should I get my air conditioner serviced?", "acceptedAnswer": {"@type": "Answer", "text": "Once a year suits most homes, ideally in spring before Adelaide's summer demand peaks. Systems that run hard all summer, evaporative coolers and commercial refrigeration benefit from more frequent servicing. A service covers filter and coil cleaning, refrigerant checks and a full system diagnostic, which catches small faults before they become breakdowns."}},
+        {"@type": "Question", "name": "Why is my air conditioner blowing warm air?", "acceptedAnswer": {"@type": "Answer", "text": "Common causes are a blocked filter, the wrong mode or temperature setting, a dirty or iced-up coil, an outdoor unit that has tripped or lost power, or low refrigerant from a leak. Check the filter and settings first. If it still blows warm, switch it off and book a repair, because running a system low on refrigerant can damage the compressor."}},
+        {"@type": "Question", "name": "Do you service and repair ducted, split system and evaporative air conditioners?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. We install, service and repair ducted reverse cycle, split system and evaporative air conditioning, as well as commercial refrigeration, coolrooms and freezer rooms. If you're not sure what type of system you have, email a photo of the indoor or outdoor unit and we'll identify it."}},
+        {"@type": "Question", "name": "Which areas of Adelaide do you cover?", "acceptedAnswer": {"@type": "Answer", "text": "We service all of Adelaide and the surrounding suburbs. We're based in Enfield, so the northern, north-eastern and western suburbs are closest to us, but we work right across the metro area, including the city, eastern, southern and Adelaide Hills suburbs. Wherever you are in or around Adelaide, call 1300 019 568 and we'll book a time."}},
+        {"@type": "Question", "name": "Are your quotes free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, our quotes are free. Call 1300 019 568 or send a request through this page, tell us what the system is doing, and we'll arrange a time. You get a clear price before any work starts."}},
+        {"@type": "Question", "name": "Are you open on weekends?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, we're open 7 days. Our hours are 7am to 6pm Monday to Friday, and 9am to 3pm on Saturday and Sunday."}},
+        {"@type": "Question", "name": "Are you licensed to work with refrigerant?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Air Cool Dynamics holds Refrigerant Trading Authorisation AU069541 from the Australian Refrigeration Council (ARC), which a business needs to acquire, store and handle refrigerant in Australia. We also hold South Australian licence BLD353665."}},
+        {"@type": "Question", "name": "Should I repair or replace my air conditioner?", "acceptedAnswer": {"@type": "Answer", "text": "Repair usually makes sense when the system is relatively young and the fault is isolated. Replacement is often the better spend when it needs repeated repairs, runs on R22 refrigerant, or can't keep the house comfortable on hot days. We'll inspect it and tell you plainly which option we'd choose and why."}},
+        {"@type": "Question", "name": "Do you work on commercial refrigeration and coolrooms?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. We install, service and repair coolrooms, freezer rooms and commercial refrigeration for restaurants, cafés, warehouses and food storage businesses across Adelaide, as well as commercial air conditioning for offices and retail."}}
+      ]
+    }
+            ]
+        });
+
+        document.head.appendChild(schema);
+
+    } else {
+        // All other URLs: Normal page metadata
+        console.log("Normal page SEO is running.");
+    }
+})();
+</script>
+
+
+
   </head>
 
   <body>

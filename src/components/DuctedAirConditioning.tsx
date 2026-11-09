@@ -1,10 +1,18 @@
 function DuctedAirConditioning() {
-  // window.location.replace("/Homepage.html");
-  const DuctedAirConditioning = import.meta.env.DEV
-    ? import.meta.env.VITE_API_URL_LOCALHOST 
-    : import.meta.env.VITE_API_URL;
-  window.location.href = `${DuctedAirConditioning}/`;
-  return null;
+  return(
+  <div style={{ width: "100%", height: "100vh" }}>
+      <iframe
+        src="/HTML/ducted-air-conditioning-adelaide.html"
+        title="Complete HTML Page"
+        style={{
+          width: "100%",
+          height: "100%",
+          border: "none",
+        }}
+      />
+    </div>
+  );
+
 }
 
 export default DuctedAirConditioning ;
