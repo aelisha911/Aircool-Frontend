@@ -69,8 +69,12 @@ const Footer = () => {
         path: "/services/split-type-air-conditioning-unit",
       },
       {
-        label: "Evaporative Cooler",
-        path: "/services/evaporative-cooler",
+        label: "Evaporative Air Conditioning",
+        path: "/services/evaporative-air-conditioning",
+      },
+      {
+        label: "Ducted Gas Heating",
+        path: "/services/ducted-gas-heating-adelaide",
       },
       {
         label: "Fridge & Coolroom",

@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    { "source": "/services/evaporative-cooler", "destination": "/services/evaporative-air-conditioning", "permanent": true },
+    { "source": "/Homepage.html", "destination": "/", "permanent": true },
+    { "source": "/HTML/ducted-air-conditioning-adelaide.html", "destination": "/services/central-ducted-air-conditioning", "permanent": true },
+    { "source": "/HTML/ducted-gas-heating-adelaide.html", "destination": "/services/ducted-gas-heating-adelaide", "permanent": true },
+    { "source": "/HTML/evaporative-air-conditioning-adelaide.html", "destination": "/services/evaporative-air-conditioning", "permanent": true }
+  ]
+}

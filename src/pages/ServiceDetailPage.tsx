@@ -5,14 +5,27 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTABanner from "@/components/CTABanner";
 import { services } from "@/data/services";
+import Seo from "@/components/Seo";
 
-const ServiceDetailPage = () => {
-  const { slug } = useParams<{ slug: string }>();
+interface ServiceDetailPageProps {
+  serviceSlug?: string;
+}
+
+const ServiceDetailPage = ({ serviceSlug }: ServiceDetailPageProps) => {
+  const { slug: routeSlug } = useParams<{ slug: string }>();
+  const slug = serviceSlug ?? routeSlug;
   const service = services.find((s) => s.slug === slug);
 
   if (!service) {
     return (
       <div className="min-h-screen flex flex-col">
+        <Seo
+          title={`${service.title} | Air Cool Dynamics`}
+          description={service.shortDescription}
+          path={`/services/${service.slug}`}
+          type="Service"
+          serviceName={service.title}
+        />
         <Navbar />
         <main className="flex-1 flex items-center justify-center">
           <div className="text-center">

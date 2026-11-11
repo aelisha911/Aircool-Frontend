@@ -3,11 +3,16 @@ import Footer from "@/components/Footer";
 import CTABanner from "@/components/CTABanner";
 import ServiceCard from "@/components/ServiceCard";
 import { services } from "@/data/services";
-import serviceHeroImg from "@/assets/Service-hero.jpeg";
+import Seo from "@/components/Seo";
 
 const ServicesPage = () => {
   return (
     <div className="min-h-screen flex flex-col">
+      <Seo
+        title="Air Conditioning & Heating Services Adelaide | Air Cool Dynamics"
+        description="Explore ducted air conditioning, evaporative cooling, ducted gas heating, split systems, maintenance and commercial refrigeration services in Adelaide."
+        path="/services"
+      />
       <Navbar />
       <main className="flex-1">
         {/* Banner */}

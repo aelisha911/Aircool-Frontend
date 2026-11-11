@@ -74,7 +74,25 @@ export const services: Service[] = [
   icon: "Settings",
 },
  {
-  slug: "central-ducted-air-conditioning",
+ slug: "ducted-gas-heating-adelaide",
+ title: "Ducted Gas Heating Adelaide",
+ shortDescription: "Whole-home ducted gas heating installation, servicing and repairs for reliable Adelaide winters.",
+ fullDescription: [
+   "Stay warm through Adelaide winters with efficient ducted gas heating installed and serviced by our experienced local team.",
+   "We provide system design, installation, repairs and preventative maintenance for ducted gas heating systems, with practical advice to keep your home comfortable and your running costs under control."
+ ],
+ benefits: [
+   "Even whole-home warmth",
+   "Fast, reliable heating",
+   "Professional installation and repairs",
+   "Regular maintenance to improve efficiency",
+   "Local Adelaide service and support"
+ ],
+ image: "/images/ducted-gas-heating-service-adelaide.webp",
+ icon: "Flame",
+},
+ {
+ slug: "central-ducted-air-conditioning",
   title: "Central Ducted Air Conditioning",
   shortDescription: "Efficient whole-building cooling solutions with advanced central ducted air conditioning systems.",
   fullDescription: [
@@ -111,8 +129,8 @@ export const services: Service[] = [
   icon: "Wind",
 },
   {
-    slug: "evaporative-cooler",
-    title: "Evaporative Cooler",
+    slug: "evaporative-air-conditioning",
+    title: "Evaporative Air Conditioning",
     shortDescription: "Eco-friendly evaporative cooling solutions that use natural processes to cool your space efficiently.",
     fullDescription: [
       "Evaporative coolers are a natural, energy-efficient way to cool your home, using the power of water and fresh air. We specialise in the installation, servicing, and repairs of evaporative cooling systems, helping you stay comfortable all summer long.",

@@ -1,49 +1,29 @@
-import type { SyntheticEvent } from "react";
+import { useEffect } from "react";
+import Seo from "./Seo";
+import ductedAirConditioningContent from "@/assets/ducted-air-conditioning-content.html?raw";
 
-function DuctedAirConditioning() {
+const DuctedAirConditioning = () => {
+  useEffect(() => {
+    document.querySelectorAll<HTMLScriptElement>('script[type="application/ld+json"]').forEach((script) => {
+      if (!script.textContent?.trim()) script.remove();
+    });
+  }, []);
 
-    const handleDuctedAirConditioningLoad = (event: SyntheticEvent<HTMLIFrameElement>) => {
-      const iframe = event.currentTarget;
-      const document = iframe.contentDocument;
-  
-      if (!document) {
-        return;
-      }
-  
-      document.querySelectorAll<HTMLAnchorElement>("a[href]").forEach((link) => {
-        const href = link.getAttribute("href");
-  
-        if (!href || href.startsWith("#")) {
-          return;
-        }
-  
-        const url = new URL(href, window.location.href);
-  
-        if (url.protocol === "http:" || url.protocol === "https:") {
-          if (url.hostname === "aircooldynamics.com.au") {
-            link.href = `${window.location.origin}${url.pathname}${url.search}${url.hash}`;
-          }
-  
-          link.target = "_top";
-        }
-      });
-    };
-  
-  return(
-  <div style={{ width: "100%", height: "100vh" }}>
-    <iframe
-        src="/HTML/ducted-air-conditioning-adelaide.html"
-        title="Complete HTML Page"
-        onLoad={handleDuctedAirConditioningLoad}
-        style={{
-          width: "100%",
-          height: "100%",
-          border: "none",
-        }}
+  return (
+    <>
+      <Seo
+        title="Ducted Air Conditioning Adelaide | Air Cool Dynamics"
+        description="Ducted reverse cycle air conditioning in Adelaide: design, installation, servicing and repairs by ARC-authorised technicians. Free on-site quote."
+        path="/services/central-ducted-air-conditioning"
+        type="Service"
+        serviceName="Ducted Air Conditioning Adelaide"
+        includeSchema={false}
+        socialDescription="Whole-home ducted reverse cycle heating and cooling, installed, serviced and repaired across Adelaide. Free on-site quote."
+        image="https://aircooldynamics.com.au/images/ducted-air-conditioning-service-adelaide-rooftop.webp"
       />
-    </div>
+      <div dangerouslySetInnerHTML={{ __html: ductedAirConditioningContent }} />
+    </>
   );
+};
 
-}
-
-export default DuctedAirConditioning ;
+export default DuctedAirConditioning;

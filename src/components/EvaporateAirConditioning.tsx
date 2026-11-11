@@ -1,47 +1,29 @@
-import type { SyntheticEvent } from "react";
+import { useEffect } from "react";
+import Seo from "./Seo";
+import evaporativeAirConditioningContent from "@/assets/evaporative-air-conditioning-content.html?raw";
 
-function EvaporateAirConditioning() {
-const handleEvaporateAirConditioningLoad = (event: SyntheticEvent<HTMLIFrameElement>) => {
-        const iframe = event.currentTarget;
-        const document = iframe.contentDocument;
-    
-        if (!document) {
-          return;
-        }
-    
-        document.querySelectorAll<HTMLAnchorElement>("a[href]").forEach((link) => {
-          const href = link.getAttribute("href");
-    
-          if (!href || href.startsWith("#")) {
-            return;
-          }
-    
-          const url = new URL(href, window.location.href);
-    
-          if (url.protocol === "http:" || url.protocol === "https:") {
-            if (url.hostname === "aircooldynamics.com.au") {
-              link.href = `${window.location.origin}${url.pathname}${url.search}${url.hash}`;
-            }
-    
-            link.target = "_top";
-          }
-        });
-      };
-    
-    return(
-    <div style={{ width: "100%", height: "100vh" }}>
-      <iframe
-          src="/HTML/evaporative-air-conditioning-adelaide.html"
-          title="Complete HTML Page"
-          onLoad={handleEvaporateAirConditioningLoad}
-          style={{
-            width: "100%",
-            height: "100%",
-            border: "none",
-          }}
-        />
-      </div>
-    );
-}
+const EvaporateAirConditioning = () => {
+  useEffect(() => {
+    document.querySelectorAll<HTMLScriptElement>('script[type="application/ld+json"]').forEach((script) => {
+      if (!script.textContent?.trim()) script.remove();
+    });
+  }, []);
 
-export default EvaporateAirConditioning ;
+  return (
+    <>
+      <Seo
+        title="Evaporative Air Conditioning Adelaide | Air Cool Dynamics"
+        description="Evaporative air conditioning in Adelaide: ducted cooler installation, servicing and repairs by licensed local technicians. Free on-site quote."
+        path="/services/evaporative-air-conditioning"
+        type="Service"
+        serviceName="Evaporative Air Conditioning Adelaide"
+        includeSchema={false}
+        socialDescription="Ducted evaporative cooling installed, serviced and repaired across Adelaide. Free on-site quote."
+        image="https://aircooldynamics.com.au/images/evaporative-air-conditioning-rooftop-adelaide.webp"
+      />
+      <div dangerouslySetInnerHTML={{ __html: evaporativeAirConditioningContent }} />
+    </>
+  );
+};
+
+export default EvaporateAirConditioning;

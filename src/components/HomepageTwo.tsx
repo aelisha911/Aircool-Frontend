@@ -1,46 +1,22 @@
 
-import type { SyntheticEvent } from "react";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+import HomepageRenderer from "./HomepageRenderer";
+import Seo from "./Seo";
 
 function HomepageTwo() {
-  const handleHomepageLoad = (event: SyntheticEvent<HTMLIFrameElement>) => {
-    const iframe = event.currentTarget;
-    const document = iframe.contentDocument;
-
-    if (!document) {
-      return;
-    }
-
-    document.querySelectorAll<HTMLAnchorElement>("a[href]").forEach((link) => {
-      const href = link.getAttribute("href");
-
-      if (!href || href.startsWith("#")) {
-        return;
-      }
-
-      const url = new URL(href, window.location.href);
-
-      if (url.protocol === "http:" || url.protocol === "https:") {
-        if (url.hostname === "aircooldynamics.com.au") {
-          link.href = `${window.location.origin}${url.pathname}${url.search}${url.hash}`;
-        }
-
-        link.target = "_top";
-      }
-    });
-  };
-
   return (
-    <div style={{ width: "100%", height: "100vh" }}>
-      <iframe
-        src="/Homepage.html"
-        title="Complete HTML Page"
-        onLoad={handleHomepageLoad}
-        style={{
-          width: "100%",
-          height: "100%",
-          border: "none",
-        }}
+    <div className="min-h-screen flex flex-col">
+      <Seo
+        title="Air Conditioning Service & Repairs Adelaide | Air Cool Dynamics"
+        description="Aircon service, repairs and installation across Adelaide and surrounding suburbs. Ducted, split system, evaporative and coolrooms. Open 7 days. Call 1300 019 568."
+        path="/"
       />
+      {/* <Navbar /> */}
+      <main className="flex-1">
+        <HomepageRenderer />
+      </main>
+      {/* <Footer /> */}
     </div>
   );
 }

@@ -1,6 +1,3 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-// import HomepageRenderer from "@/components/HomepageRenderer";
 import HomepageTwo from "@/components/HomepageTwo";
 
 const Index = () => {

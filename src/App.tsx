@@ -39,6 +39,7 @@ const App = () => (
           <Route path="/services/central-ducted-air-conditioning" element={<DuctedAirConditioning />} />
           <Route path="/services/ducted-gas-heating-adelaide" element={<DuctedGasHeating />} />
           <Route path="/services/evaporative-air-conditioning" element={<EvaporateAirConditioning />} />
+          <Route path="/services/evaporative-cooler" element={<Navigate to="/services/evaporative-air-conditioning" replace />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/services/:slug" element={<ServiceDetailPage />} />
           <Route path="/about" element={<AboutPage />} />
